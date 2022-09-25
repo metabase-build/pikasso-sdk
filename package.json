@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,json,css,html}\"",
+    "node:version": "node -v",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish",
+    "prepare": "husky install",
+    "clean": "turbo run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml",
+    "setup": "pnpm install",
+    "update": "pnpm update -r --interactive --latest"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ],
+    "printWidth": 120,
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.24.4",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "turbo": "^1.5.3"
+  }
+}

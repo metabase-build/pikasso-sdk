@@ -1,0 +1,33 @@
+{
+  "name": "@pikasso-sdk/core",
+  "version": "0.1.0",
+  "author": {
+    "name": "Metabase",
+    "url": "https://metabase.build"
+  },
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "exports": {
+    "import": "./lib/index.mjs",
+    "require": "./lib/index.js"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "dev": "tsup src/index.ts --format esm,cjs --outDir lib --watch --dts",
+    "build": "tsup src/index.ts --format esm,cjs --outDir lib --minify --dts",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf lib"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "eslint": "8.24.0",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.3"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**", "lib/**"]
+    },
+    "web#build": {
+      "dependsOn": ["^build"],
+      "env": ["VERCEL_URL", "ENCRYPTION_SECRET", "OPENAPI_BASE_URL", "NODE_ENV"],
+      "outputs": [".next/**"]
+    },
+    "graphql:mesh": {
+      "outputs": [".mesh/**"],
+      "cache": false
+    },
+    "graphql:codegen": {
+      "dependsOn": ["graphql:mesh"],
+      "outputs": ["generated/**"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "start": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
