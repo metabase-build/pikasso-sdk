@@ -20,7 +20,7 @@ function App() {
       <header className="App-header">
         {nftId ? (
           <div className="App-button">
-            <PikassoPayButton nftId={nftId} environment="prod" />
+            <PikassoPayButton nftId={nftId} environment="production" />
           </div>
         ) : (
           <form ref={formElement} onSubmit={handleSubmit}>
