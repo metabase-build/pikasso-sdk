@@ -30,7 +30,7 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
   mintTo,
   emailTo,
   listingId,
-  clientId,
+  nftId,
   auctionId,
   hideMintOnInactiveClient = false,
   showOverlay = true,
@@ -47,7 +47,7 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
 
   const { fetchClientIntegration } = pikassoStatusService({
     libVersion: LIB_VERSION,
-    clientId,
+    nftId,
     environment,
     auctionId,
     mintConfig,
@@ -56,7 +56,7 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
   });
 
   const { connect } = pikassoModalService({
-    clientId,
+    nftId,
     showOverlay,
     setConnecting,
     libVersion: LIB_VERSION,
