@@ -1,16 +1,16 @@
 import { onboardingRequestStatusResponse } from '@/types';
 
-interface MetabaseStatusButtonServiceProps {
+interface PikassoStatusButtonServiceProps {
   onClick?: (e: any) => void;
 }
 
-export function metabaseStatusButtonService({ onClick }: MetabaseStatusButtonServiceProps) {
+export function pikassoStatusButtonService({ onClick }: PikassoStatusButtonServiceProps) {
   const getButtonText = (status: onboardingRequestStatusResponse) => {
     switch (status) {
       case onboardingRequestStatusResponse.INVALID:
         return 'Invalid clientId';
       case onboardingRequestStatusResponse.WAITING_SUBMISSION:
-        return 'Click here to setup Metabase';
+        return 'Click here to setup Pikasso';
       case onboardingRequestStatusResponse.PENDING:
         return 'Your application is under review';
       case onboardingRequestStatusResponse.ACCEPTED:

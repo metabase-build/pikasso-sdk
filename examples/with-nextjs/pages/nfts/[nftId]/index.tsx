@@ -99,6 +99,8 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                 </div>
                 <div className="mt-7.5">
                   {/* TODO: SDK Button here */}
+
+                  {/*<PikassoPayButton clientId={nftId} environment="prod" />*/}
                   <code>Paste SDK Button here with arguments {nftId}</code>
                 </div>
               </div>

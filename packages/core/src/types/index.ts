@@ -62,7 +62,7 @@ export interface BaseButtonProps {
   environment?: string;
 }
 
-export interface MetabasePayButtonProps extends BaseButtonProps {
+export interface PikassoPayButtonProps extends BaseButtonProps {
   collectionTitle?: string;
   collectionDescription?: string;
   collectionPhoto?: string;

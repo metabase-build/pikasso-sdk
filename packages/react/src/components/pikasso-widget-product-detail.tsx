@@ -7,7 +7,7 @@ import { ProductDetails } from '@/components/molecules/product-details';
 import { ProductNftInfo } from '@/components/molecules/product-nft-info';
 import { createUseStyles } from 'react-jss';
 
-export type MetabaseWidgetProductDetailProps = HTMLAttributes<HTMLDivElement>;
+export type PikassoWidgetProductDetailProps = HTMLAttributes<HTMLDivElement>;
 
 const productDetail = {
   nftInfo: {
@@ -42,7 +42,7 @@ const productDetail = {
   ],
 };
 
-export const MetabaseWidgetProductDetail: FC<MetabaseWidgetProductDetailProps> = ({ className, ...rest }) => {
+export const PikassoWidgetProductDetail: FC<PikassoWidgetProductDetailProps> = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const data = productDetail;

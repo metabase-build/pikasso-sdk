@@ -1,12 +1,12 @@
 import { CSSProperties, MouseEvent } from 'react';
-import { MetabasePayButtonProps, BaseButtonProps } from '@pikasso-sdk/core';
+import { BaseButtonProps, PikassoPayButtonProps } from '@pikasso-sdk/core';
 
-export interface MetabasePayButtonReactProps extends MetabasePayButtonProps {
+export interface PikassoPayButtonReactProps extends PikassoPayButtonProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   style?: CSSProperties;
 }
 
-export interface MetabaseStatusButtonReactProps extends BaseButtonProps {
+export interface PikassoStatusButtonReactProps extends BaseButtonProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   style?: CSSProperties;
 }

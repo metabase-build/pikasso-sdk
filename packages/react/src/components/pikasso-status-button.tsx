@@ -1,19 +1,17 @@
 import React, { FC, MouseEventHandler, useEffect, useMemo, useState } from 'react';
-
+import { formatProps, useStyles } from 'styles';
+import { PikassoStatusButtonReactProps } from '@/types';
+import useEnvironment from '@/hooks/use-environment';
+import { LIB_VERSION } from '@/utils/version';
 import {
   clientNames,
-  metabaseStatusButtonService,
-  metabaseStatusService,
+  pikassoStatusButtonService,
+  pikassoStatusService,
   onboardingRequestStatusResponse,
   brandLogo,
 } from '@pikasso-sdk/core';
 
-import { formatProps, useStyles } from 'styles';
-import { MetabaseStatusButtonReactProps } from '@/types';
-import useEnvironment from '@/hooks/use-environment';
-import { LIB_VERSION } from '@/utils/version';
-
-export const MetabaseStatusButton: FC<MetabaseStatusButtonReactProps> = ({
+export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
   className,
   disabled,
   onClick,
@@ -30,7 +28,7 @@ export const MetabaseStatusButton: FC<MetabaseStatusButtonReactProps> = ({
   const [status, setStatus] = useState(onboardingRequestStatusResponse.WAITING_SUBMISSION);
   const { isServerSideRendering } = useEnvironment();
 
-  const { goToOnboarding, fetchClientIntegration } = metabaseStatusService({
+  const { goToOnboarding, fetchClientIntegration } = pikassoStatusService({
     libVersion: LIB_VERSION,
     clientId,
     environment,
@@ -40,7 +38,7 @@ export const MetabaseStatusButton: FC<MetabaseStatusButtonReactProps> = ({
     setStatus,
     clientName: clientNames.react,
   });
-  const { getButtonText, isButtonDisabled, handleClick } = metabaseStatusButtonService({ onClick });
+  const { getButtonText, isButtonDisabled, handleClick } = pikassoStatusButtonService({ onClick });
 
   const _handleClick: MouseEventHandler<HTMLButtonElement> = (e) => handleClick(e, status, goToOnboarding);
 
@@ -57,21 +55,21 @@ export const MetabaseStatusButton: FC<MetabaseStatusButtonReactProps> = ({
   const classes = useStyles(formatProps(theme));
 
   const content = useMemo(() => {
-    return <span className={classes.metabaseParagraph}>{getButtonText(status)}</span>;
+    return <span className={classes.pikassoParagraph}>{getButtonText(status)}</span>;
   }, [status]);
 
   return (
     <>
       {!isServerSideRendering && (
         <button
-          className={`${classes.metabaseButton} ${className || ''}`}
+          className={`${classes.pikassoButton} ${className || ''}`}
           disabled={isButtonDisabled(status)}
           style={{ ...style }}
           tabIndex={tabIndex}
           onClick={_handleClick}
           {...props}
         >
-          <img className={classes.metabaseImg} src={brandLogo} alt="Metabase logo" />
+          <img className={classes.pikassoImg} src={brandLogo} alt="Pikasso logo" />
           {content}
         </button>
       )}
