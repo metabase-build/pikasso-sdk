@@ -8,7 +8,7 @@ export function pikassoStatusButtonService({ onClick }: PikassoStatusButtonServi
   const getButtonText = (status: onboardingRequestStatusResponse) => {
     switch (status) {
       case onboardingRequestStatusResponse.INVALID:
-        return 'Invalid clientId';
+        return 'Invalid nftId';
       case onboardingRequestStatusResponse.WAITING_SUBMISSION:
         return 'Click here to setup Pikasso';
       case onboardingRequestStatusResponse.PENDING:

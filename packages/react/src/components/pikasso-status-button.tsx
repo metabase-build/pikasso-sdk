@@ -18,7 +18,7 @@ export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
   style,
   tabIndex,
   theme = 'dark',
-  clientId,
+  nftId,
   auctionId,
   platformId,
   mintConfig,
@@ -30,7 +30,7 @@ export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
 
   const { goToOnboarding, fetchClientIntegration } = pikassoStatusService({
     libVersion: LIB_VERSION,
-    clientId,
+    nftId,
     environment,
     platformId,
     auctionId,

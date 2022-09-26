@@ -4,7 +4,7 @@ import { getEnvironmentBaseUrl } from '@/utils/ui';
 
 interface PikassoStatusServiceParams {
   libVersion: string;
-  clientId: string;
+  nftId: string;
   platformId?: string;
   auctionId?: string;
   mintConfig: any;
@@ -13,9 +13,9 @@ interface PikassoStatusServiceParams {
   clientName: clientNames;
 }
 
-const validateClientId = (clientId: string): boolean => {
+const validateNftId = (nftId: string): boolean => {
   try {
-    return validateUuid(clientId);
+    return validateUuid(nftId);
   } catch (e) {
     console.error(e);
     return false;
@@ -24,7 +24,7 @@ const validateClientId = (clientId: string): boolean => {
 
 export function pikassoStatusService({
   libVersion,
-  clientId,
+  nftId,
   platformId,
   auctionId,
   mintConfig,
@@ -33,21 +33,21 @@ export function pikassoStatusService({
   clientName,
 }: PikassoStatusServiceParams) {
   async function fetchClientIntegration() {
-    if (!clientId || clientId === '' || clientId === '<YOUR_CLIENT_ID>') {
-      console.error('You must enter your own Pikasso client ID in <PikassoPayButton clientId="XXX">');
+    if (!nftId || nftId === '' || nftId === '<YOUR_CLIENT_ID>') {
+      console.error('You must enter your own Pikasso client ID in <PikassoPayButton nftId="XXX">');
       return;
     }
 
-    if (!validateClientId(clientId)) {
+    if (!validateNftId(nftId)) {
       console.error(
-        'The clientId passed to is invalid. Make sure to pass the clientId obtained from the pikasso team, with format XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX',
+        'The nftId passed to is invalid. Make sure to pass the nftId obtained from the pikasso team, with format XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX',
       );
       return;
     }
 
     const baseUrl = getEnvironmentBaseUrl(environment);
 
-    const res = await fetch(`${baseUrl}/api/metabase/onboardingRequests/${clientId}/status`, {
+    const res = await fetch(`${baseUrl}/api/metabase/onboardingRequests/${nftId}/status`, {
       headers: {
         [customHeaders.clientVersion]: libVersion,
         [customHeaders.clientName]: clientName,
@@ -55,7 +55,7 @@ export function pikassoStatusService({
     });
 
     if (res.status === 200) {
-      const resData: { clientId: string; status: onboardingRequestStatusResponse } = await res.json();
+      const resData: { nftId: string; status: onboardingRequestStatusResponse } = await res.json();
 
       setStatus(resData.status);
     } else {
@@ -70,7 +70,7 @@ export function pikassoStatusService({
 
   const formatOnboardingQueryParams = () => {
     const onboardingQueryParams: OnboardingQueryParams = {
-      clientId: clientId,
+      nftId: nftId,
     };
 
     if (platformId) {

@@ -54,7 +54,7 @@ export interface BaseButtonProps {
   className?: string;
   disabled?: boolean;
   tabIndex?: number;
-  clientId: string;
+  nftId: string;
   auctionId?: string;
   theme?: theme;
   platformId?: string;
@@ -78,7 +78,7 @@ export interface PikassoPayButtonProps extends BaseButtonProps {
 }
 
 export type OnboardingQueryParams = {
-  clientId: string;
+  nftId: string;
   platformId?: string;
   auctionId?: string;
   mintConfig?: string;

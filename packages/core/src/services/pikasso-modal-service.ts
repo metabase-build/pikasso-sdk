@@ -2,7 +2,7 @@ import { PayButtonConfig, SigninMethods, clientNames, paymentMethods } from '@/t
 import { getEnvironmentBaseUrl } from '@/utils/ui';
 
 type MintQueryParams = {
-  clientId: string;
+  nftId: string;
   closeOnSuccess: string;
   collectionTitle?: string;
   collectionDescription?: string;
@@ -61,7 +61,7 @@ const removeLoadingOverlay = (): void => {
 };
 
 interface PikassoModalServiceParams {
-  clientId: string;
+  nftId: string;
   libVersion: string;
   showOverlay: boolean;
   setConnecting: (connecting: boolean) => void;
@@ -85,7 +85,7 @@ export interface PikassoModalServiceReturn {
 }
 
 export function pikassoModalService({
-  clientId,
+  nftId,
   libVersion,
   showOverlay,
   setConnecting,
@@ -108,7 +108,7 @@ export function pikassoModalService({
 
     const getMintQueryParams = (): string => {
       const mintQueryParams: MintQueryParams = {
-        clientId: clientId,
+        nftId: nftId,
         closeOnSuccess: 'false',
         clientName,
         clientVersion: libVersion,
