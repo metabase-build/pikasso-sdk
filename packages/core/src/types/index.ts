@@ -6,7 +6,7 @@ export enum clientNames {
 
 export enum baseUrls {
   /* TODO: replace latest */
-  prod = 'https://pikasso-sdk.vercel.app',
+  production = 'https://pikasso-sdk.vercel.app',
   /* TODO: replace latest */
   staging = 'https://pikasso-sdk-staging.vercel.app',
   dev = 'http://localhost:3000',

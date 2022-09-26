@@ -45,6 +45,7 @@ export const useStyles: (
     width: '21px',
     height: '21px',
     'margin-right': '0.875rem',
+    color: ({ paragraphColor }: CustomStylingProps) => paragraphColor,
   },
   pikassoParagraph: {
     color: ({ paragraphColor }: CustomStylingProps) => paragraphColor,

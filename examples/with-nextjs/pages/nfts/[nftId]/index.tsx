@@ -7,6 +7,7 @@ import { CardNft } from '../../../components/card-nft';
 import { Footer } from '../../../components/footer';
 import { Header } from '../../../components/header';
 import Head from 'next/head';
+import { PikassoPayButton } from '@pikasso-sdk/react';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -100,8 +101,8 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                 <div className="mt-7.5">
                   {/* TODO: SDK Button here */}
 
-                  {/*<PikassoPayButton clientId={nftId} environment="prod" />*/}
-                  <code>Paste SDK Button here with arguments {nftId}</code>
+                  <PikassoPayButton clientId={nftId} environment="production" />
+                  {/*<code>Paste SDK Button here with arguments {nftId}</code>*/}
                 </div>
               </div>
               {/* end listing */}
