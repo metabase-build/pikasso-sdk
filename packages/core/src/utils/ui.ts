@@ -8,7 +8,7 @@ export function getEnvironmentBaseUrl(environment = ''): string {
   }
 
   if (productionValues.includes(environment) || !environment) {
-    return baseUrls.prod;
+    return baseUrls.production;
   }
 
   return baseUrls.dev;
