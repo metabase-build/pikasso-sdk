@@ -2,7 +2,7 @@ import { OnboardingQueryParams, clientNames, customHeaders, onboardingRequestSta
 import { validateUuid } from '@/utils';
 import { getEnvironmentBaseUrl } from '@/utils/ui';
 
-interface MetabaseStatusServiceParams {
+interface PikassoStatusServiceParams {
   libVersion: string;
   clientId: string;
   platformId?: string;
@@ -22,7 +22,7 @@ const validateClientId = (clientId: string): boolean => {
   }
 };
 
-export function metabaseStatusService({
+export function pikassoStatusService({
   libVersion,
   clientId,
   platformId,
@@ -31,16 +31,16 @@ export function metabaseStatusService({
   setStatus,
   environment,
   clientName,
-}: MetabaseStatusServiceParams) {
+}: PikassoStatusServiceParams) {
   async function fetchClientIntegration() {
     if (!clientId || clientId === '' || clientId === '<YOUR_CLIENT_ID>') {
-      console.error('You must enter your own Metabase client ID in <MetabasePayButton clientId="XXX">');
+      console.error('You must enter your own Pikasso client ID in <PikassoPayButton clientId="XXX">');
       return;
     }
 
     if (!validateClientId(clientId)) {
       console.error(
-        'The clientId passed to is invalid. Make sure to pass the clientId obtained from the metabase team, with format XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX',
+        'The clientId passed to is invalid. Make sure to pass the clientId obtained from the pikasso team, with format XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX',
       );
       return;
     }

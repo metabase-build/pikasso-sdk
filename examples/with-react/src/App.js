@@ -1,4 +1,4 @@
-import { MetabasePayButton } from '@pikasso-sdk/react';
+import { PikassoPayButton } from '@pikasso-sdk/react';
 import { useRef, useState } from 'react';
 import './App.css';
 
@@ -20,7 +20,7 @@ function App() {
       <header className="App-header">
         {nftId ? (
           <div className="App-button">
-            <MetabasePayButton clientId={nftId} environment="prod" />
+            <PikassoPayButton clientId={nftId} environment="prod" />
           </div>
         ) : (
           <form ref={formElement} onSubmit={handleSubmit}>

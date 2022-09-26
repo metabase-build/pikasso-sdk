@@ -1,26 +1,24 @@
 import React, { FC, Fragment, MouseEvent, useEffect, useMemo } from 'react';
 import { useState } from 'react';
-
+import { formatProps, useStyles } from 'styles';
+import useEnvironment from '@/hooks/use-environment';
+import { LIB_VERSION } from '@/utils/version';
 import {
   clientNames,
-  metabaseModalService,
-  metabasePayButtonService,
-  metabaseStatusService,
+  pikassoModalService,
+  pikassoPayButtonService,
+  pikassoStatusService,
   mintingContractTypes,
   onboardingRequestStatusResponse,
   brandLogo,
 } from '@pikasso-sdk/core';
-
-import { formatProps, useStyles } from 'styles';
-import { MetabasePayButtonReactProps } from '@/types';
-import useEnvironment from '@/hooks/use-environment';
-import { LIB_VERSION } from '@/utils/version';
+import { PikassoPayButtonReactProps } from '@/types';
 
 const defaultMintConfig: any = {
   type: mintingContractTypes.CANDY_MACHINE,
 };
 
-export const MetabasePayButton: FC<MetabasePayButtonReactProps> = ({
+export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
   className,
   disabled,
   onClick,
@@ -48,7 +46,7 @@ export const MetabasePayButton: FC<MetabasePayButtonReactProps> = ({
   const [status, setStatus] = useState(onboardingRequestStatusResponse.WAITING_SUBMISSION);
   const { isServerSideRendering } = useEnvironment();
 
-  const { fetchClientIntegration } = metabaseStatusService({
+  const { fetchClientIntegration } = pikassoStatusService({
     libVersion: LIB_VERSION,
     clientId,
     environment,
@@ -58,7 +56,7 @@ export const MetabasePayButton: FC<MetabasePayButtonReactProps> = ({
     clientName: clientNames.react,
   });
 
-  const { connect } = metabaseModalService({
+  const { connect } = pikassoModalService({
     clientId,
     showOverlay,
     setConnecting,
@@ -67,7 +65,7 @@ export const MetabasePayButton: FC<MetabasePayButtonReactProps> = ({
     clientName: clientNames.react,
   });
 
-  const { checkProps, getButtonText, shouldHideButton, handleClick } = metabasePayButtonService({
+  const { checkProps, getButtonText, shouldHideButton, handleClick } = pikassoPayButtonService({
     onClick,
     connecting,
     paymentMethod,
@@ -109,11 +107,11 @@ export const MetabasePayButton: FC<MetabasePayButtonReactProps> = ({
 
   const content = useMemo(() => {
     return (
-      <span className={classes.metabaseParagraph} role="button-paragraph">
+      <span className={classes.pikassoParagraph} role="button-paragraph">
         {getButtonText(connecting)}
       </span>
     );
-  }, [classes.metabaseParagraph, connecting, getButtonText]);
+  }, [classes.pikassoParagraph, connecting, getButtonText]);
 
   if (shouldHideButton({ hideMintOnInactiveClient, status })) {
     return null;
@@ -123,14 +121,14 @@ export const MetabasePayButton: FC<MetabasePayButtonReactProps> = ({
     <Fragment>
       {!isServerSideRendering && (
         <button
-          className={`${classes.metabaseButton} ${className || ''}`}
+          className={`${classes.pikassoButton} ${className || ''}`}
           disabled={disabled}
           style={{ ...style }}
           tabIndex={tabIndex}
           onClick={_handleClick}
           {...rest}
         >
-          <img className={classes.metabaseImg} src={brandLogo} alt="Metabase logo" />
+          <img className={classes.pikassoImg} src={brandLogo} alt="Pikasso logo" />
           {content}
         </button>
       )}

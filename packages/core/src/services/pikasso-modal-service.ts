@@ -60,7 +60,7 @@ const removeLoadingOverlay = (): void => {
   }
 };
 
-interface MetabaseModalServiceParams {
+interface PikassoModalServiceParams {
   clientId: string;
   libVersion: string;
   showOverlay: boolean;
@@ -69,7 +69,7 @@ interface MetabaseModalServiceParams {
   clientName: clientNames;
 }
 
-export interface MetabaseModalServiceReturn {
+export interface PikassoModalServiceReturn {
   connect: (
     mintConfig: PayButtonConfig,
     collectionTitle?: string,
@@ -84,14 +84,14 @@ export interface MetabaseModalServiceReturn {
   ) => void;
 }
 
-export function metabaseModalService({
+export function pikassoModalService({
   clientId,
   libVersion,
   showOverlay,
   setConnecting,
   environment,
   clientName,
-}: MetabaseModalServiceParams): MetabaseModalServiceReturn {
+}: PikassoModalServiceParams): PikassoModalServiceReturn {
   const createPopup = (
     mintConfig: PayButtonConfig,
     collectionTitle?: string,

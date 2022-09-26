@@ -6,24 +6,24 @@ interface IProps {
   paymentMethod?: paymentMethods;
 }
 
-export function metabasePayButtonService({ onClick, connecting, paymentMethod }: IProps) {
+export function pikassoPayButtonService({ onClick, connecting, paymentMethod }: IProps) {
   const checkProps = ({ collectionTitle, collectionDescription, collectionPhoto }: any) => {
     let _collectionTitle = collectionTitle;
     let _collectionDescription = collectionDescription;
     let _collectionPhoto = collectionPhoto;
 
     if (collectionTitle === '<TITLE_FOR_YOUR_COLLECTION>') {
-      console.warn('No collection title specified. Please add a collection title to your <MetabasePayButton />');
+      console.warn('No collection title specified. Please add a collection title to your <PikassoPayButton />');
       _collectionTitle = '';
     }
     if (collectionDescription === '<DESCRIPTION_OF_YOUR_COLLECTION>') {
       console.warn(
-        'No collection description specified. Please add a collection description to your <MetabasePayButton />',
+        'No collection description specified. Please add a collection description to your <PikassoPayButton />',
       );
       _collectionDescription = '';
     }
     if (collectionPhoto === '<OPT_URL_TO_PHOTO_COVER>') {
-      console.warn('No collection photo specified. Please add a collection photo to your <MetabasePayButton />');
+      console.warn('No collection photo specified. Please add a collection photo to your <PikassoPayButton />');
       _collectionPhoto = '';
     }
     return [_collectionTitle, _collectionDescription, _collectionPhoto];

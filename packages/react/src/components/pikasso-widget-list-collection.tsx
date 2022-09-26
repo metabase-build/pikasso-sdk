@@ -4,7 +4,7 @@ import { CollectionItemNft } from '@/components/molecules/collection-item-nft';
 import { Tabs } from '@/components/molecules/tabs';
 import { createUseStyles } from 'react-jss';
 
-export type MetabaseWidgetListCollectionProps = HTMLAttributes<HTMLDivElement>;
+export type PikassoWidgetListCollectionProps = HTMLAttributes<HTMLDivElement>;
 
 const listCollection = {
   banner: {
@@ -69,7 +69,7 @@ const listCollection = {
   ],
 };
 
-export const MetabaseWidgetListCollection: FC<MetabaseWidgetListCollectionProps> = ({ className, ...rest }) => {
+export const PikassoWidgetListCollection: FC<PikassoWidgetListCollectionProps> = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const data = listCollection;

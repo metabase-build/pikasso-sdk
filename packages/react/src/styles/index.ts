@@ -16,12 +16,12 @@ export const formatProps = (theme: string): CustomStylingProps => ({
 
 export const useStyles: (
   data?: (CustomStylingProps & { theme?: Jss.Theme | undefined }) | undefined,
-) => Classes<'@global' | 'metabaseButton' | 'metabaseImg' | 'metabaseParagraph'> = createUseStyles({
+) => Classes<'@global' | 'pikassoButton' | 'pikassoImg' | 'pikassoParagraph'> = createUseStyles({
   '@global': {
     '@import':
       "url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap')",
   },
-  metabaseButton: {
+  pikassoButton: {
     display: 'flex',
     'flex-direction': 'row',
     'align-items': 'center',
@@ -41,12 +41,12 @@ export const useStyles: (
       cursor: 'pointer',
     },
   },
-  metabaseImg: {
+  pikassoImg: {
     width: '21px',
     height: '21px',
     'margin-right': '0.875rem',
   },
-  metabaseParagraph: {
+  pikassoParagraph: {
     color: ({ paragraphColor }: CustomStylingProps) => paragraphColor,
     margin: '0',
   },
