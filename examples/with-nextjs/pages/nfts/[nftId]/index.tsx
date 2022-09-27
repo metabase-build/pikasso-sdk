@@ -8,6 +8,9 @@ import { Footer } from '../../../components/footer';
 import { Header } from '../../../components/header';
 import Head from 'next/head';
 import { PikassoPayButton } from '@pikasso-sdk/react';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -99,9 +102,8 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                   <span className={'text-sm'}>(0.845 ETH)</span>
                 </div>
                 <div className="mt-7.5">
-                  {/* TODO: SDK Button here */}
-                  <PikassoPayButton nftId={nftId} environment="production" />
-                  {/*<code>Paste SDK Button here with arguments {nftId}</code>*/}
+                  {/* environment: 'production' | 'staging' | 'dev' */}
+                  <PikassoPayButton nftId={nftId} environment={publicRuntimeConfig.environment} />
                 </div>
               </div>
               {/* end listing */}

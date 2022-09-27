@@ -6,6 +6,10 @@ const nextConfig = {
   experimental: {
     newNextLinkBehavior: true,
   },
+
+  publicRuntimeConfig: {
+    environment: process.env.ENVIRONMENT,
+  },
 };
 
 module.exports = nextConfig;
