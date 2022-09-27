@@ -14,4 +14,4 @@ export function getEnvironmentBaseUrl(environment = ''): string {
   return baseUrls.dev;
 }
 
-export const brandLogo = 'https://metabase-sdk.vercel.app/assets/image/logo-icon-only.svg';
+export const brandLogo = 'https://builder.pikasso.xyz/assets/image/logo-icon-only.svg';

@@ -47,7 +47,7 @@ export function pikassoStatusService({
 
     const baseUrl = getEnvironmentBaseUrl(environment);
 
-    const res = await fetch(`${baseUrl}/api/metabase/onboardingRequests/${nftId}/status`, {
+    const res = await fetch(`${baseUrl}/api/pikasso/onboarding-requests/${nftId}/status`, {
       headers: {
         [customHeaders.clientVersion]: libVersion,
         [customHeaders.clientName]: clientName,

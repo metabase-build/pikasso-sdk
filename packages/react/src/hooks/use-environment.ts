@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 
 export default function useEnvironment() {
-  const [isServerSideRendering, setIsServerSideRendering] = useState(true);
-  useEffect(() => {
+  const [isServerSideRendering, setIsServerSideRendering] = React.useState(true);
+
+  React.useEffect(() => {
     setIsServerSideRendering(false);
   }, []);
 

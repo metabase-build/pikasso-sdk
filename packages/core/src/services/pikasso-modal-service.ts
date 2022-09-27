@@ -3,22 +3,22 @@ import { getEnvironmentBaseUrl } from '@/utils/ui';
 
 type MintQueryParams = {
   nftId: string;
-  closeOnSuccess: string;
-  collectionTitle?: string;
-  collectionDescription?: string;
-  collectionPhoto?: string;
-  mintTo?: string;
-  emailTo?: string;
-  listingId?: string;
-  clientName: string;
-  clientVersion: string;
-  mintConfig: string;
-  whPassThroughArgs?: string;
-  paymentMethod?: paymentMethods;
-  preferredSigninMethod?: SigninMethods;
+  // closeOnSuccess: string;
+  // collectionTitle?: string;
+  // collectionDescription?: string;
+  // collectionPhoto?: string;
+  // mintTo?: string;
+  // emailTo?: string;
+  // listingId?: string;
+  // clientName: string;
+  // clientVersion: string;
+  // mintConfig: string;
+  // whPassThroughArgs?: string;
+  // paymentMethod?: paymentMethods;
+  // preferredSigninMethod?: SigninMethods;
 };
 
-const overlayId = '__metabase-overlay__';
+const overlayId = '__pikasso-overlay__';
 
 const getChromeVersion = () => {
   const raw = navigator.userAgent.match(/Chrom(e|ium)\/(\d+)\./);
@@ -86,121 +86,120 @@ export interface PikassoModalServiceReturn {
 
 export function pikassoModalService({
   nftId,
-  libVersion,
+  // libVersion,
   showOverlay,
   setConnecting,
   environment,
-  clientName,
-}: PikassoModalServiceParams): PikassoModalServiceReturn {
-  const createPopup = (
-    mintConfig: PayButtonConfig,
-    collectionTitle?: string,
-    collectionDescription?: string,
-    collectionPhoto?: string,
-    mintTo?: string,
-    emailTo?: string,
-    listingId?: string,
-    whPassThroughArgs?: any,
-    paymentMethod?: paymentMethods,
-    preferredSigninMethod?: SigninMethods,
-  ) => {
-    const urlOrigin = getEnvironmentBaseUrl(environment);
+}: // clientName,
+PikassoModalServiceParams): PikassoModalServiceReturn {
+  const createPopup = () =>
+    // mintConfig: PayButtonConfig,
+    // collectionTitle?: string,
+    // collectionDescription?: string,
+    // collectionPhoto?: string,
+    // mintTo?: string,
+    // emailTo?: string,
+    // listingId?: string,
+    // whPassThroughArgs?: any,
+    // paymentMethod?: paymentMethods,
+    // preferredSigninMethod?: SigninMethods,
+    {
+      const urlOrigin = getEnvironmentBaseUrl(environment);
 
-    const getMintQueryParams = (): string => {
-      const mintQueryParams: MintQueryParams = {
-        nftId: nftId,
-        closeOnSuccess: 'false',
-        clientName,
-        clientVersion: libVersion,
-        mintConfig: JSON.stringify(mintConfig),
+      const getMintQueryParams = (): string => {
+        const mintQueryParams: MintQueryParams = {
+          nftId: nftId,
+          // closeOnSuccess: 'false',
+          // clientName,
+          // clientVersion: libVersion,
+          // mintConfig: JSON.stringify(mintConfig),
+        };
+
+        // if (collectionTitle) {
+        //   mintQueryParams.collectionTitle = collectionTitle;
+        // }
+
+        // if (collectionDescription) {
+        //   mintQueryParams.collectionDescription = collectionDescription;
+        // }
+
+        // if (collectionPhoto) {
+        //   mintQueryParams.collectionPhoto = collectionPhoto;
+        // }
+
+        // if (mintTo) {
+        //   mintQueryParams.mintTo = mintTo;
+        // }
+
+        // if (emailTo) {
+        //   mintQueryParams.emailTo = emailTo;
+        // }
+
+        // if (listingId) {
+        //   mintQueryParams.listingId = listingId;
+        // }
+
+        // if (whPassThroughArgs) {
+        //   mintQueryParams.whPassThroughArgs = JSON.stringify(whPassThroughArgs);
+        // }
+
+        // if (paymentMethod) {
+        //   mintQueryParams.paymentMethod = paymentMethod;
+        // }
+
+        // if (preferredSigninMethod) {
+        //   mintQueryParams.preferredSigninMethod = preferredSigninMethod;
+        // }
+
+        return new URLSearchParams(mintQueryParams).toString();
       };
+      const callbackUrl = encodeURIComponent(`${urlOrigin}/checkout?${getMintQueryParams()}`);
+      const url = `${urlOrigin}/api/auth/signin?callbackUrl=${callbackUrl}`;
 
-      if (collectionTitle) {
-        mintQueryParams.collectionTitle = collectionTitle;
+      const pop = window.open(url, 'popUpWindow', createPopupString());
+
+      if (pop) {
+        registerListeners(pop);
+        if (showOverlay) {
+          addLoadingOverlay();
+        }
+        return;
       }
 
-      if (collectionDescription) {
-        mintQueryParams.collectionDescription = collectionDescription;
-      }
+      setConnecting(false);
 
-      if (collectionPhoto) {
-        mintQueryParams.collectionPhoto = collectionPhoto;
+      const newTab = window.open(url, '_blank');
+      if (!newTab) {
+        console.error('Failed to open popup window and new tab');
       }
-
-      if (mintTo) {
-        mintQueryParams.mintTo = mintTo;
-      }
-
-      if (emailTo) {
-        mintQueryParams.emailTo = emailTo;
-      }
-
-      if (listingId) {
-        mintQueryParams.listingId = listingId;
-      }
-
-      if (whPassThroughArgs) {
-        mintQueryParams.whPassThroughArgs = JSON.stringify(whPassThroughArgs);
-      }
-
-      if (paymentMethod) {
-        mintQueryParams.paymentMethod = paymentMethod;
-      }
-
-      if (preferredSigninMethod) {
-        mintQueryParams.preferredSigninMethod = preferredSigninMethod;
-      }
-
-      return new URLSearchParams(mintQueryParams).toString();
     };
-    const callbackUrl = encodeURIComponent(`${urlOrigin}/checkout?${getMintQueryParams()}`);
-    const url = `${urlOrigin}/api/auth/signin?callbackUrl=${callbackUrl}`;
 
-    const pop = window.open(url, 'popUpWindow', createPopupString());
+  const connect = () =>
+    // mintConfig: PayButtonConfig,
+    // collectionTitle?: string,
+    // collectionDescription?: string,
+    // collectionPhoto?: string,
+    // mintTo?: string,
+    // emailTo?: string,
+    // listingId?: string,
+    // whPassThroughArgs?: any,
+    // paymentMethod?: paymentMethods,
+    // preferredSigninMethod?: SigninMethods,
+    {
+      setConnecting(true);
 
-    if (pop) {
-      registerListeners(pop);
-      if (showOverlay) {
-        addLoadingOverlay();
-      }
-      return;
-    }
-
-    setConnecting(false);
-
-    const newTab = window.open(url, '_blank');
-    if (!newTab) {
-      console.error('Failed to open popup window and new tab');
-    }
-  };
-
-  const connect = (
-    mintConfig: PayButtonConfig,
-    collectionTitle?: string,
-    collectionDescription?: string,
-    collectionPhoto?: string,
-    mintTo?: string,
-    emailTo?: string,
-    listingId?: string,
-    whPassThroughArgs?: any,
-    paymentMethod?: paymentMethods,
-    preferredSigninMethod?: SigninMethods,
-  ) => {
-    setConnecting(true);
-
-    createPopup(
-      mintConfig,
-      collectionTitle,
-      collectionDescription,
-      collectionPhoto,
-      mintTo,
-      emailTo,
-      listingId,
-      whPassThroughArgs,
-      paymentMethod,
-      preferredSigninMethod,
-    );
-  };
+      createPopup();
+      // mintConfig,
+      // collectionTitle,
+      // collectionDescription,
+      // collectionPhoto,
+      // mintTo,
+      // emailTo,
+      // listingId,
+      // whPassThroughArgs,
+      // paymentMethod,
+      // preferredSigninMethod,
+    };
 
   function registerListeners(pop: Window) {
     const timer = setInterval(function () {

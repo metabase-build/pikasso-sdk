@@ -1,5 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import { Fragment } from 'react';
+import * as React from 'react';
 import Image from 'next/future/image';
 import { Details } from '../../../components/details';
 import { Avatar } from '../../../components/avatar';
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Fragment>
+    <React.Fragment>
       <Head>
         <title>Pawradise #13529</title>
       </Head>
@@ -263,7 +263,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
       </main>
 
       <Footer />
-    </Fragment>
+    </React.Fragment>
   );
 };
 
