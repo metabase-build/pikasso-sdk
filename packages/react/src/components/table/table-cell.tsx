@@ -1,9 +1,9 @@
-import React, { FC, TdHTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type TableCellProps = TdHTMLAttributes<HTMLTableDataCellElement>;
+export type TableCellProps = React.TdHTMLAttributes<HTMLTableDataCellElement>;
 
-export const TableCell: FC<TableCellProps> = ({ className, children, ...rest }) => {
+export const TableCell: React.FC<TableCellProps> = ({ className, children, ...rest }) => {
   const classes = useStyles();
 
   return (

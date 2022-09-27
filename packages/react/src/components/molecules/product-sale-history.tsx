@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { Table } from '@/components/table/table';
 import { TableHeader } from '@/components/table/table-header';
 import { TableHeaderCell } from '@/components/table/table-header-cell';
@@ -8,9 +8,9 @@ import { TableCell } from '@/components/table/table-cell';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { createUseStyles } from 'react-jss';
 
-export type ProductSaleHistoryProps = HTMLAttributes<HTMLDivElement> & { data: any[] };
+export type ProductSaleHistoryProps = React.HTMLAttributes<HTMLDivElement> & { data: any[] };
 
-export const ProductSaleHistory: FC<ProductSaleHistoryProps> = ({ data, className, ...rest }) => {
+export const ProductSaleHistory: React.FC<ProductSaleHistoryProps> = ({ data, className, ...rest }) => {
   const classes = useStyles();
 
   return (

@@ -1,9 +1,9 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type CollectionBannerProps = HTMLAttributes<HTMLDivElement> & { data: any; totalItems: number };
+export type CollectionBannerProps = React.HTMLAttributes<HTMLDivElement> & { data: any; totalItems: number };
 
-export const CollectionBanner: FC<CollectionBannerProps> = ({ data, totalItems, className, ...rest }) => {
+export const CollectionBanner: React.FC<CollectionBannerProps> = ({ data, totalItems, className, ...rest }) => {
   const classes = useStyles();
   return (
     <div {...rest} className={className}>

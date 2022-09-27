@@ -1,9 +1,9 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type ProductNftInfoProps = HTMLAttributes<HTMLDivElement> & { data: any };
+export type ProductNftInfoProps = React.HTMLAttributes<HTMLDivElement> & { data: any };
 
-export const ProductNftInfo: FC<ProductNftInfoProps> = ({ data, className, ...rest }) => {
+export const ProductNftInfo: React.FC<ProductNftInfoProps> = ({ data, className, ...rest }) => {
   const classes = useStyles();
 
   return (

@@ -1,4 +1,4 @@
-import React, { FC, Fragment, MouseEvent, useEffect, useMemo } from 'react';
+import * as React from 'react';
 import { useState } from 'react';
 import { formatProps, useStyles } from 'styles';
 import useEnvironment from '@/hooks/use-environment';
@@ -17,7 +17,7 @@ const defaultMintConfig: any = {
   type: mintingContractTypes.CANDY_MACHINE,
 };
 
-export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
+export const PikassoPayButton: React.FC<PikassoPayButtonReactProps> = ({
   className,
   disabled,
   onClick,
@@ -79,13 +79,13 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
   collectionDescription = newCollectionDescription;
   collectionPhoto = newCollectionPhoto;
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (hideMintOnInactiveClient) {
       fetchClientIntegration();
     }
   }, [status]);
 
-  const _handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const _handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     return handleClick(event, () => {
       connect(
         mintConfig,
@@ -104,7 +104,7 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
 
   const classes = useStyles(formatProps(theme));
 
-  const content = useMemo(() => {
+  const content = React.useMemo(() => {
     return (
       <span className={classes.pikassoParagraph} role="button-paragraph">
         {getButtonText(connecting)}
@@ -117,7 +117,7 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       {!isServerSideRendering && (
         <button
           className={`${classes.pikassoButton} ${className || ''}`}
@@ -153,6 +153,6 @@ export const PikassoPayButton: FC<PikassoPayButtonReactProps> = ({
           {content}
         </button>
       )}
-    </Fragment>
+    </React.Fragment>
   );
 };

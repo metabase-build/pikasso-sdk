@@ -1,9 +1,9 @@
-import React, { FC, TableHTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type TableProps = TableHTMLAttributes<HTMLTableElement>;
+export type TableProps = React.TableHTMLAttributes<HTMLTableElement>;
 
-export const Table: FC<TableProps> = ({ className, children, ...rest }) => {
+export const Table: React.FC<TableProps> = ({ className, children, ...rest }) => {
   const classes = useStyles();
 
   return (

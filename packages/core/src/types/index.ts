@@ -5,11 +5,9 @@ export enum clientNames {
 }
 
 export enum baseUrls {
-  /* TODO: replace latest */
-  production = 'https://pikasso-sdk.vercel.app',
-  /* TODO: replace latest */
-  staging = 'https://pikasso-sdk-staging.vercel.app',
-  dev = 'http://localhost:3000',
+  production = 'https://builder.pikasso.xyz',
+  staging = 'https://staging.builder.pikasso.xyz',
+  dev = 'http://localhost:3000' /* dev.builder.pikasso.xyz */,
 }
 
 export enum customHeaders {

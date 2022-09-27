@@ -1,9 +1,9 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>;
+export type TableBodyProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableBody: FC<TableBodyProps> = ({ className, children, ...rest }) => {
+export const TableBody: React.FC<TableBodyProps> = ({ className, children, ...rest }) => {
   const classes = useStyles();
 
   return (

@@ -1,10 +1,10 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { createUseStyles } from 'react-jss';
 
-export type ProductSaleInfoProps = HTMLAttributes<HTMLDivElement> & { data: any };
+export type ProductSaleInfoProps = React.HTMLAttributes<HTMLDivElement> & { data: any };
 
-export const ProductSaleInfo: FC<ProductSaleInfoProps> = ({ data, className, ...rest }) => {
+export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({ data, className, ...rest }) => {
   const classes = useStyles();
 
   return (

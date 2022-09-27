@@ -1,10 +1,10 @@
-import React, { FC, HTMLAttributes, useState } from 'react';
+import * as React from 'react';
 import { CollectionBanner } from '@/components/molecules/collection-banner';
 import { CollectionItemNft } from '@/components/molecules/collection-item-nft';
 import { Tabs } from '@/components/molecules/tabs';
 import { createUseStyles } from 'react-jss';
 
-export type PikassoWidgetListCollectionProps = HTMLAttributes<HTMLDivElement>;
+export type PikassoWidgetListCollectionProps = React.HTMLAttributes<HTMLDivElement>;
 
 const listCollection = {
   banner: {
@@ -69,12 +69,12 @@ const listCollection = {
   ],
 };
 
-export const PikassoWidgetListCollection: FC<PikassoWidgetListCollectionProps> = ({ className, ...rest }) => {
+export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionProps> = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const data = listCollection;
 
-  const [items, setItems] = useState(data.onSale);
+  const [items, setItems] = React.useState(data.onSale);
 
   const handleOnChangeTab = (tab: number) => {
     if (tab === 0) {

@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useEffect, useMemo, useState } from 'react';
+import * as React from 'react';
 import { formatProps, useStyles } from 'styles';
 import { PikassoStatusButtonReactProps } from '@/types';
 import useEnvironment from '@/hooks/use-environment';
@@ -11,7 +11,7 @@ import {
   brandLogo,
 } from '@pikasso-sdk/core';
 
-export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
+export const PikassoStatusButton: React.FC<PikassoStatusButtonReactProps> = ({
   className,
   disabled,
   onClick,
@@ -25,7 +25,7 @@ export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
   environment,
   ...props
 }) => {
-  const [status, setStatus] = useState(onboardingRequestStatusResponse.WAITING_SUBMISSION);
+  const [status, setStatus] = React.useState(onboardingRequestStatusResponse.WAITING_SUBMISSION);
   const { isServerSideRendering } = useEnvironment();
 
   const { goToOnboarding, fetchClientIntegration } = pikassoStatusService({
@@ -40,9 +40,9 @@ export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
   });
   const { getButtonText, isButtonDisabled, handleClick } = pikassoStatusButtonService({ onClick });
 
-  const _handleClick: MouseEventHandler<HTMLButtonElement> = (e) => handleClick(e, status, goToOnboarding);
+  const _handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => handleClick(e, status, goToOnboarding);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchClientIntegration();
 
     const interval = setInterval(() => {
@@ -54,12 +54,12 @@ export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
 
   const classes = useStyles(formatProps(theme));
 
-  const content = useMemo(() => {
+  const content = React.useMemo(() => {
     return <span className={classes.pikassoParagraph}>{getButtonText(status)}</span>;
   }, [status]);
 
   return (
-    <>
+    <React.Fragment>
       {!isServerSideRendering && (
         <button
           className={`${classes.pikassoButton} ${className || ''}`}
@@ -73,6 +73,6 @@ export const PikassoStatusButton: FC<PikassoStatusButtonReactProps> = ({
           {content}
         </button>
       )}
-    </>
+    </React.Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { ProductSaleHistory } from '@/components/molecules/product-sale-history';
 import { ProductNft } from '@/components/molecules/product-nft';
 import { ProductProperties } from '@/components/molecules/product-properties';
@@ -7,7 +7,7 @@ import { ProductDetails } from '@/components/molecules/product-details';
 import { ProductNftInfo } from '@/components/molecules/product-nft-info';
 import { createUseStyles } from 'react-jss';
 
-export type PikassoWidgetProductDetailProps = HTMLAttributes<HTMLDivElement>;
+export type PikassoWidgetProductDetailProps = React.HTMLAttributes<HTMLDivElement>;
 
 const productDetail = {
   nftInfo: {
@@ -42,7 +42,7 @@ const productDetail = {
   ],
 };
 
-export const PikassoWidgetProductDetail: FC<PikassoWidgetProductDetailProps> = ({ className, ...rest }) => {
+export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProps> = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const data = productDetail;

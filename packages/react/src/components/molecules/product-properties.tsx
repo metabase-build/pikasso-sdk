@@ -1,11 +1,11 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { createUseStyles } from 'react-jss';
 import CollapseList from '@/components/molecules/collapseList';
 
-export type ProductPropertiesProps = HTMLAttributes<HTMLDivElement> & { data: any[] };
+export type ProductPropertiesProps = React.HTMLAttributes<HTMLDivElement> & { data: any[] };
 
-export const ProductProperties: FC<ProductPropertiesProps> = ({ data, className, ...rest }) => {
+export const ProductProperties: React.FC<ProductPropertiesProps> = ({ data, className, ...rest }) => {
   const classes = useStyles();
 
   return (

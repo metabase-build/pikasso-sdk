@@ -1,10 +1,10 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { TableRow } from '@/components/table/table-row';
 import { createUseStyles } from 'react-jss';
 
-export type TableHeaderProps = HTMLAttributes<HTMLTableSectionElement>;
+export type TableHeaderProps = React.HTMLAttributes<HTMLTableSectionElement>;
 
-export const TableHeader: FC<TableHeaderProps> = ({ className, children, ...rest }) => {
+export const TableHeader: React.FC<TableHeaderProps> = ({ className, children, ...rest }) => {
   const classes = useStyles();
 
   return (

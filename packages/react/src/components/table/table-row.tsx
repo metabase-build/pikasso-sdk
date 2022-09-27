@@ -1,8 +1,8 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 
-export type TableRowProps = HTMLAttributes<HTMLTableRowElement>;
+export type TableRowProps = React.HTMLAttributes<HTMLTableRowElement>;
 
-export const TableRow: FC<TableRowProps> = ({ className, children, ...rest }) => {
+export const TableRow: React.FC<TableRowProps> = ({ className, children, ...rest }) => {
   return (
     <tr className={className} {...rest}>
       {children}

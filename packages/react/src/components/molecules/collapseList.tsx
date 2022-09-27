@@ -1,13 +1,13 @@
-import React, { FC, HTMLAttributes, useState } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type CollapseListProps = HTMLAttributes<HTMLDivElement> & {
+export type CollapseListProps = React.HTMLAttributes<HTMLDivElement> & {
   id?: string;
   title?: string;
   defaultExpanded?: boolean;
 };
 
-export const CollapseList: FC<CollapseListProps> = ({
+export const CollapseList: React.FC<CollapseListProps> = ({
   id = '0',
   title = '',
   defaultExpanded = false,
@@ -17,7 +17,7 @@ export const CollapseList: FC<CollapseListProps> = ({
 }) => {
   const classes = useStyles();
 
-  const [isCollapsed, setIsCollapsed] = useState(!defaultExpanded);
+  const [isCollapsed, setIsCollapsed] = React.useState(!defaultExpanded);
 
   const handleClick = () => {
     const bodyContElem = document.getElementById(id + '-collapsible__body__hidden');

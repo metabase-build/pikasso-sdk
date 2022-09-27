@@ -1,9 +1,9 @@
-import React, { FC, ThHTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type TableHeaderCellProps = ThHTMLAttributes<HTMLTableHeaderCellElement>;
+export type TableHeaderCellProps = React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 
-export const TableHeaderCell: FC<TableHeaderCellProps> = ({ className, children, ...rest }) => {
+export const TableHeaderCell: React.FC<TableHeaderCellProps> = ({ className, children, ...rest }) => {
   const classes = useStyles();
 
   return (

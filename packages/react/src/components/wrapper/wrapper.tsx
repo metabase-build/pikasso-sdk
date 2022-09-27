@@ -1,9 +1,9 @@
-import React, { FC, HTMLAttributes } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type WrapperTableProps = HTMLAttributes<HTMLDivElement>;
+export type WrapperTableProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const Wrapper: FC<WrapperTableProps> = ({ className, children, ...rest }) => {
+export const Wrapper: React.FC<WrapperTableProps> = ({ className, children, ...rest }) => {
   const classes = useStyles();
   return (
     <div className={classes.content} {...rest}>

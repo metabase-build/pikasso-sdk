@@ -1,15 +1,15 @@
-import React, { FC, HTMLAttributes, useState } from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type TabsProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
+export type TabsProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   totalOnSave: number;
   totalAuction: number;
   onChange: (value: number) => void;
 };
 
-export const Tabs: FC<TabsProps> = ({ className, totalOnSave = 0, totalAuction = 0, onChange, ...rest }) => {
+export const Tabs: React.FC<TabsProps> = ({ className, totalOnSave = 0, totalAuction = 0, onChange, ...rest }) => {
   const classes = useStyles();
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = React.useState(0);
 
   const handleOnClick = (data: number) => {
     setCurrentTab(data);
