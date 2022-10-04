@@ -16,7 +16,15 @@ const Index: NextPage = ({}: InferGetServerSidePropsType<typeof getServerSidePro
         width="100%"
         height="710"
         className={'rounded-xl border'}
-        src="http://localhost:3000/embed/list-collection"
+        src="http://localhost:3000/embed/list-collection/"
+        id="embed-list-collection-"
+      ></iframe>
+
+      <iframe
+        width="100%"
+        height="710"
+        className={'mt-10 rounded-xl border'}
+        src="http://localhost:3000/embed/product-detail/"
         id="embed-product-detail-12994"
       ></iframe>
 
@@ -24,7 +32,7 @@ const Index: NextPage = ({}: InferGetServerSidePropsType<typeof getServerSidePro
         width="100%"
         height="710"
         className={'mt-10 rounded-xl border'}
-        src="http://localhost:3000/embed/product-detail"
+        src="http://localhost:3000/embed/button/"
         id="embed-product-detail-12994"
       ></iframe>
     </div>
