@@ -8,11 +8,11 @@ export const CollectionBanner: React.FC<CollectionBannerProps> = ({ data, totalI
   return (
     <div {...rest} className={className}>
       <div>
-        <img alt={'banner'} className={classes.banner} src={data.banner} />
+        <img alt={'banner'} className={classes.banner} src={data.bannerImage} />
       </div>
 
       <div className={classes.containerContent}>
-        <img alt={'avatar'} className={classes.avatar} src={data.avatar} />
+        <img alt={'avatar'} className={classes.avatar} src={data.logoImage} />
 
         <div className={classes.boxEmpty} />
 
@@ -62,6 +62,14 @@ const useStyles = createUseStyles({
     containerContent: {
       flexWrap: 'wrap',
       margin: '0 12px',
+    },
+
+    avatar: {
+      position: 'absolute',
+      left: '24px',
+      top: '-70px',
+      height: '120px',
+      width: '120px',
     },
   },
 

@@ -15,8 +15,8 @@ export const ProductProperties: React.FC<ProductPropertiesProps> = ({ data, clas
           <div className={classes.content}>
             {data.map((item, index) => (
               <div key={index} className={classes.property}>
-                <p>{item.type}</p>
-                <p className={classes.name}>{item.name}</p>
+                <p className={classes.center}>{item.type}</p>
+                <p className={classes.name}>{item.value}</p>
               </div>
             ))}
           </div>
@@ -53,5 +53,10 @@ const useStyles = createUseStyles({
     color: '#1F1F23',
     fontSize: '18px',
     fontWeight: 700,
+    textAlign: 'center',
+  },
+
+  center: {
+    textAlign: 'center',
   },
 });

@@ -10,12 +10,18 @@ export enum baseUrls {
   dev = 'http://localhost:3000' /* dev.builder.pikasso.xyz */,
 }
 
+export enum openApiUrls {
+  production = '',
+  staging = 'https://staging-api.pikasso.xyz/v0',
+  dev = 'https://dev-api.metabase.build/v0',
+}
+
 export enum customHeaders {
   clientVersion = 'X-Client-Version',
   clientName = 'X-Client-Name',
 }
 
-type theme = 'light' | 'dark';
+type theme = 'light' | 'dark' | 'primary' | 'secondary' | 'tertiary';
 
 export type paymentMethods = 'fiat' | 'ETH';
 export const paymentMethodIsEth = (paymentMethod?: paymentMethods) => paymentMethod === 'ETH';

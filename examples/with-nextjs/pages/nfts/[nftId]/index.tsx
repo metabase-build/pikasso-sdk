@@ -7,8 +7,8 @@ import { CardNft } from '../../../components/card-nft';
 import { Footer } from '../../../components/footer';
 import { Header } from '../../../components/header';
 import Head from 'next/head';
-import { PikassoPayButton } from '@pikasso-sdk/react';
 import getConfig from 'next/config';
+import { PikassoPayButton } from '@pikasso-sdk/react';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -215,7 +215,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
               {/* initial an array with 4 items */}
               {[
                 {
-                  description: 'Monkey collection 69',
+                  description: 'Monkey list-collection 69',
                   title: 'Pawradise #13530',
                   image: '/assets/images/pawradise-1.png',
                   avatar: '/assets/images/user-2.png',
@@ -223,7 +223,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                   price: '$2,500',
                 },
                 {
-                  description: 'Monkey collection 69',
+                  description: 'Monkey list-collection 69',
                   title: 'Pawradise #13531',
                   image: '/assets/images/pawradise-2.png',
                   avatar: '/assets/images/user-2.png',
@@ -231,7 +231,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                   price: '$2,500',
                 },
                 {
-                  description: 'Monkey collection 69',
+                  description: 'Monkey list-collection 69',
                   title: 'Pawradise #13532',
                   image: '/assets/images/pawradise-3.png',
                   avatar: '/assets/images/user-2.png',
@@ -239,7 +239,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                   price: '$2,500',
                 },
                 {
-                  description: 'Monkey collection 69',
+                  description: 'Monkey list-collection 69',
                   title: 'Pawradise #13533',
                   image: '/assets/images/pawradise-4.png',
                   avatar: '/assets/images/user-2.png',

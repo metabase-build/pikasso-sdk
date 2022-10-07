@@ -1,70 +1,70 @@
 import * as React from 'react';
-import { ProductSaleHistory } from '@/components/molecules/product-sale-history';
+import { useCallback, useEffect, useState } from 'react';
 import { ProductNft } from '@/components/molecules/product-nft';
 import { ProductProperties } from '@/components/molecules/product-properties';
-import { ProductSaleInfo } from '@/components/molecules/product-sale-info';
-import { ProductDetails } from '@/components/molecules/product-details';
 import { ProductNftInfo } from '@/components/molecules/product-nft-info';
 import { createUseStyles } from 'react-jss';
+import useEnvironment from '@/hooks/use-environment';
+import { getEnvironmentOpenApiUrls } from '@pikasso-sdk/core';
+import { ProductSaleInfo } from '@/components/molecules/product-sale-info';
 
-export type PikassoWidgetProductDetailProps = React.HTMLAttributes<HTMLDivElement>;
+export type PikassoWidgetProductDetailProps = React.HTMLAttributes<HTMLDivElement> & { nftId: string };
 
-const productDetail = {
-  nftInfo: {
-    image:
-      'https://img.freepik.com/premium-vector/mutant-ape-yacht-club-nft-artwork-collection-set-unique-bored-monkey-character-nfts-variant_361671-259.jpg?w=1380',
-    title: 'Monkey collection 69',
-    name: 'Monkey 66',
-    creator: 'hung@codelight.co',
-    owner: 'John Doe',
-    description: 'You can find any kind of monkey NFT you are looking for.',
-  },
-  saleInfo: {
-    startTime: 'July 1, 2022',
-    endTime: 'July 31, 2022',
-    price: '2,500',
-  },
-  details: {
-    contractAddress: '0x2953...4963',
-    tokenId: '7582415049409507...',
-    tokenStandard: 'ERC-1155',
-    blockchain: 'Polygon',
-    metadata: 'Centralized',
-    creatorFees: '0',
-  },
-  properties: [
-    { type: 'Character', name: 'HUMAN 1' },
-    { type: 'Character', name: 'HUMAN 2' },
-  ],
-  history: [
-    { event: 'Bought', price: '36.39', from: 'Estel Gutmann', to: 'EdibleAnimal', datetime: '7/13/2022' },
-    { event: 'Bought', price: '36.39', from: 'EdibleAnimal', to: 'James Main', datetime: '7/13/2022' },
-  ],
-};
-
-export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProps> = ({ className, ...rest }) => {
+export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProps> = ({
+  nftId,
+  className,
+  ...rest
+}) => {
+  const { isServerSideRendering } = useEnvironment();
   const classes = useStyles();
+  const [nft, setNft] = useState<any>();
+  const [message, setMessage] = useState('');
 
-  const data = productDetail;
+  const getNFT = useCallback(async () => {
+    if (!isServerSideRendering && nftId) {
+      const openApiBaseUrl = getEnvironmentOpenApiUrls('');
+
+      const responseNft = await fetch(`${openApiBaseUrl}/market/nft/${nftId}`);
+      let nftData = await responseNft.json();
+
+      if (nftData.statusCode === 200) {
+        setNft(nftData.data);
+      } else {
+        setMessage('Not found NFT');
+      }
+    }
+  }, [nftId, isServerSideRendering]);
+
+  useEffect(() => {
+    getNFT().catch((e) => console.log(e));
+  }, [getNFT]);
+
+  if (!(nft && !isServerSideRendering)) {
+    return <div style={{ textAlign: 'center' }}>{message}</div>;
+  }
 
   return (
-    <div {...rest} className={`${classes.container} ${className}`}>
-      <div className={classes.boxNft}>
-        <ProductNft data={data.nftInfo.image} />
+    <React.Fragment>
+      {!isServerSideRendering && nftId && (
+        <div {...rest} className={`${classes.container} ${className}`}>
+          <div className={classes.boxNft}>
+            <ProductNft data={nft.image} />
 
-        <div className={classes.flex}>
-          <ProductNftInfo data={data.nftInfo} />
+            <div className={classes.flex}>
+              <ProductNftInfo data={nft} />
 
-          <ProductSaleInfo data={data.saleInfo} className={classes.marginTop} />
+              <ProductSaleInfo nftId={nftId} data={nft} className={classes.marginTop} />
 
-          <ProductDetails data={data.details} className={classes.marginTop} />
+              {/*<ProductDetails data={data.details} className={classes.marginTop} />*/}
+            </div>
+          </div>
+
+          <ProductProperties data={nft.attributes} className={classes.marginTop} />
+
+          {/*<ProductSaleHistory data={data.history} className={classes.marginTop} />*/}
         </div>
-      </div>
-
-      <ProductProperties data={data.properties} className={classes.marginTop} />
-
-      <ProductSaleHistory data={data.history} className={classes.marginTop} />
-    </div>
+      )}
+    </React.Fragment>
   );
 };
 

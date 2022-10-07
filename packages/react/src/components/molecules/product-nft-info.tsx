@@ -10,7 +10,7 @@ export const ProductNftInfo: React.FC<ProductNftInfoProps> = ({ data, className,
     <div {...rest} className={className}>
       <div className={classes.container}>
         <div className={classes.title}>
-          <span>{data.title}</span>
+          <span>{data.collection.name}</span>
         </div>
 
         <div className={classes.name}>{data.name}</div>
@@ -21,7 +21,7 @@ export const ProductNftInfo: React.FC<ProductNftInfoProps> = ({ data, className,
 
             <div className={classes.alignUser}>
               <span className={classes.spanImage}>JD</span>
-              <span className={classes.marginLeft}>{data.creator}</span>
+              <span className={classes.marginLeft}>{data.createdBy.email}</span>
             </div>
           </div>
 
@@ -30,7 +30,7 @@ export const ProductNftInfo: React.FC<ProductNftInfoProps> = ({ data, className,
 
             <div className={classes.alignUser}>
               <span className={classes.spanImage}>JD</span>
-              <span className={classes.marginLeft}>{data.owner}</span>
+              <span className={classes.marginLeft}>{data.createdBy.email}</span>
             </div>
           </div>
         </div>
