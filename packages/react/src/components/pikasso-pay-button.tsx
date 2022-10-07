@@ -5,11 +5,11 @@ import useEnvironment from '@/hooks/use-environment';
 import { LIB_VERSION } from '@/utils/version';
 import {
   clientNames,
+  mintingContractTypes,
+  onboardingRequestStatusResponse,
   pikassoModalService,
   pikassoPayButtonService,
   pikassoStatusService,
-  mintingContractTypes,
-  onboardingRequestStatusResponse,
 } from '@pikasso-sdk/core';
 import { PikassoPayButtonReactProps } from '@/types';
 
@@ -23,7 +23,7 @@ export const PikassoPayButton: React.FC<PikassoPayButtonReactProps> = ({
   onClick,
   style,
   tabIndex,
-  theme = 'dark',
+  theme = 'primary',
   collectionTitle,
   collectionDescription,
   collectionPhoto,

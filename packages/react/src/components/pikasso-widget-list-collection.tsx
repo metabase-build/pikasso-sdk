@@ -1,101 +1,82 @@
 import * as React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { CollectionBanner } from '@/components/molecules/collection-banner';
 import { CollectionItemNft } from '@/components/molecules/collection-item-nft';
 import { Tabs } from '@/components/molecules/tabs';
 import { createUseStyles } from 'react-jss';
+import useEnvironment from '@/hooks/use-environment';
+import { getEnvironmentOpenApiUrls } from '@pikasso-sdk/core';
 
-export type PikassoWidgetListCollectionProps = React.HTMLAttributes<HTMLDivElement>;
-
-const listCollection = {
-  banner: {
-    banner:
-      'https://vqttcoh3cizpvcdbix2geh2y3irqcpax2m5nhpsqfnsxeb6i356q.arweave.net/rCcxOPsSMvqIYUX0Yh9Y2iMBPBfTOtO-UCtlcgfI330?ext=png',
-    avatar:
-      'https://img.freepik.com/premium-vector/mutant-ape-yacht-club-nft-artwork-collection-set-unique-bored-monkey-character-nfts-variant_361671-259.jpg?w=1380',
-    name: 'Monkey collection 69',
-    description: `I really like this one. I was playing around with some Illustrator tutorials when I decided I wanted to make a pixel styled wallpaper. It started with the idea if having well known pixel game characters and the text I <3 Pixel`,
-  },
-  onSale: [
-    {
-      title: 'Monkey collection 69',
-      name: 'Monkey 66',
-      image:
-        'https://924234.smushcdn.com/2329743/wp-content/uploads/2021/10/os-nfts-estao-mudando-tudo-mas-sao-feitos-para-durar-dica-alguns-sao.jpg?lossy=1&strip=1&webp=1',
-      owner: 'Estel Gutmann',
-      price: '2,500',
-    },
-    {
-      title: 'Monkey collection 69',
-      name: 'Monkey 67',
-      image:
-        'https://img.freepik.com/premium-vector/mutant-ape-yacht-club-nft-artwork-collection-set-unique-bored-monkey-character-nfts-variant_361671-259.jpg?w=1380',
-      owner: 'Estel Gutmann',
-      price: '500',
-    },
-  ],
-  liveAuction: [
-    {
-      title: 'Monkey collection 69',
-      name: 'Monkey 68',
-      image:
-        'https://924234.smushcdn.com/2329743/wp-content/uploads/2021/10/os-nfts-estao-mudando-tudo-mas-sao-feitos-para-durar-dica-alguns-sao.jpg?lossy=1&strip=1&webp=1',
-      owner: 'Estel Gutmann',
-      price: '200',
-    },
-    {
-      title: 'Monkey collection 69',
-      name: 'Monkey 69',
-      image:
-        'https://img.freepik.com/premium-vector/mutant-ape-yacht-club-nft-artwork-collection-set-unique-bored-monkey-character-nfts-variant_361671-259.jpg?w=1380',
-      owner: 'Estel Gutmann',
-      price: '700',
-    },
-    {
-      title: 'Monkey collection 69',
-      name: 'Monkey 70',
-      image:
-        'https://924234.smushcdn.com/2329743/wp-content/uploads/2021/10/os-nfts-estao-mudando-tudo-mas-sao-feitos-para-durar-dica-alguns-sao.jpg?lossy=1&strip=1&webp=1',
-      owner: 'Estel Gutmann',
-      price: '900',
-    },
-    {
-      title: 'Monkey collection 69',
-      name: 'Monkey 71',
-      image:
-        'https://924234.smushcdn.com/2329743/wp-content/uploads/2021/10/os-nfts-estao-mudando-tudo-mas-sao-feitos-para-durar-dica-alguns-sao.jpg?lossy=1&strip=1&webp=1',
-      owner: 'Estel Gutmann',
-      price: '100',
-    },
-  ],
+export type PikassoWidgetListCollectionProps = React.HTMLAttributes<HTMLDivElement> & {
+  collectionId: string;
+  onClick?: (id?: string) => void;
 };
 
-export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionProps> = ({ className, ...rest }) => {
+export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionProps> = ({
+  collectionId,
+  onClick,
+  className,
+  ...rest
+}) => {
+  const { isServerSideRendering } = useEnvironment();
   const classes = useStyles();
 
-  const data = listCollection;
+  const [collection, setCollection] = useState<any>(null);
+  const [nfts, setNfts] = useState<any[]>([]);
+  const [message, setMessage] = useState('');
 
-  const [items, setItems] = React.useState(data.onSale);
+  const getCollection = useCallback(async () => {
+    if (!isServerSideRendering && collectionId) {
+      const openApiBaseUrl = getEnvironmentOpenApiUrls('');
+
+      const responseCollection = await fetch(`${openApiBaseUrl}/market/collection/${collectionId}`);
+      let collectionData = await responseCollection.json();
+      const responseNfts = await fetch(`${openApiBaseUrl}/market/collection/${collectionId}/nft`);
+      let nftsData = await responseNfts.json();
+
+      if (collectionData.statusCode === 200) {
+        setCollection(collectionData.data);
+        setNfts(nftsData.data.nfts);
+      } else {
+        setMessage('Not found collection');
+      }
+    }
+  }, [collectionId, isServerSideRendering]);
+
+  useEffect(() => {
+    getCollection().catch((e) => console.log(e));
+  }, [getCollection]);
 
   const handleOnChangeTab = (tab: number) => {
     if (tab === 0) {
-      setItems(data.onSale);
+      getCollection().catch((e) => console.log(e));
     } else {
-      setItems(data.liveAuction);
+      setNfts([]);
     }
   };
 
+  if (!(collection && !isServerSideRendering)) {
+    return <div style={{ textAlign: 'center' }}>{message}</div>;
+  }
+
   return (
-    <div {...rest} className={`${classes.container} ${className}`}>
-      <CollectionBanner data={data.banner} totalItems={data.onSale.length + data.liveAuction.length} />
+    <React.Fragment>
+      {!isServerSideRendering && collectionId && (
+        <div {...rest} className={`${classes.container} ${className}`}>
+          <CollectionBanner data={collection} totalItems={nfts.length} />
 
-      <Tabs totalOnSave={2} totalAuction={4} onChange={handleOnChangeTab} />
+          <Tabs totalOnSave={2} totalAuction={4} onChange={handleOnChangeTab} />
 
-      <div className={classes.listNft}>
-        {items.map((item, index) => (
-          <CollectionItemNft key={index} data={item} />
-        ))}
-      </div>
-    </div>
+          <div className={classes.listNft}>
+            {nfts.map((item, index) => (
+              <button key={index} onClick={() => (onClick ? onClick(item.id) : {})}>
+                <CollectionItemNft data={item} collectionName={collection.name} />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 
@@ -104,6 +85,5 @@ const useStyles = createUseStyles({
     width: '100%',
     background: '#ffffff',
   },
-
   listNft: { marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '12px' },
 });

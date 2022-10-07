@@ -9,9 +9,29 @@ interface CustomStylingProps {
 }
 
 const themeIsLight = (theme: string) => theme === 'light';
+const themeIsDark = (theme: string) => theme === 'dark';
+const themeIsPrimary = (theme: string) => theme === 'primary';
+const themeIsSecondary = (theme: string) => theme === 'secondary';
+
 export const formatProps = (theme: string): CustomStylingProps => ({
-  buttonBgColor: themeIsLight(theme) ? 'white' : DARK_BG,
-  paragraphColor: themeIsLight(theme) ? 'black' : 'white',
+  buttonBgColor: themeIsLight(theme)
+    ? 'white'
+    : themeIsDark(theme)
+    ? DARK_BG
+    : themeIsPrimary(theme)
+    ? '#C1E64C'
+    : themeIsSecondary(theme)
+    ? '#6E43D4'
+    : 'transparent',
+  paragraphColor: themeIsLight(theme)
+    ? 'black'
+    : themeIsDark(theme)
+    ? 'white'
+    : themeIsPrimary(theme)
+    ? '#1F1F23'
+    : themeIsSecondary(theme)
+    ? '#FFFFFF'
+    : '#1F1F23',
 });
 
 export const useStyles: (

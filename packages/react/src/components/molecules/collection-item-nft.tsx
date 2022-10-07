@@ -1,9 +1,19 @@
 import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
-export type CollectionItemNftProps = React.HTMLAttributes<HTMLDivElement> & { data: any };
+export type CollectionItemNftProps = React.HTMLAttributes<HTMLDivElement> & {
+  data: any;
+  collectionName: string;
+  onClick?: (id: string) => void;
+};
 
-export const CollectionItemNft: React.FC<CollectionItemNftProps> = ({ data, className, ...rest }) => {
+export const CollectionItemNft: React.FC<CollectionItemNftProps> = ({
+  data,
+  collectionName,
+  onClick,
+  className,
+  ...rest
+}) => {
   const classes = useStyles();
   return (
     <div {...rest} className={className}>
@@ -13,7 +23,7 @@ export const CollectionItemNft: React.FC<CollectionItemNftProps> = ({ data, clas
         </div>
 
         <div className={classes.boxName}>
-          <div className={classes.title}>{data.title}</div>
+          <div className={classes.title}>{collectionName}</div>
           <div className={classes.name}>{data.name}</div>
         </div>
 
@@ -23,7 +33,7 @@ export const CollectionItemNft: React.FC<CollectionItemNftProps> = ({ data, clas
             <span className={classes.spanUser}>{data.owner}</span>
           </div>
 
-          <div className={classes.price}>${data.price}</div>
+          <div className={classes.price}>${data.order.price}</div>
         </div>
       </div>
     </div>

@@ -36,16 +36,20 @@ export const CollapseList: React.FC<CollapseListProps> = ({
 
   return (
     <div id="collapsible__container" className={className} {...rest}>
-      <div className={classes.header}>
+      <div className={classes.header} onClick={handleClick}>
         <span>{title}</span>
-        <button id="button-icon" className={classes.borderNone} onClick={handleClick}>
-          <svg width="14" height="9" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M7.329 3.171 2.6 7.9a.955.955 0 0 1-1.35-1.351l5.402-5.404a.955.955 0 0 1 1.35 0l5.403 5.404a.956.956 0 0 1-1.35 1.35L7.329 3.172Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+        <svg
+          width="14"
+          height="9"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className={`${!isCollapsed && classes.rotate}`}
+        >
+          <path
+            d="M7.329 3.171 2.6 7.9a.955.955 0 0 1-1.35-1.351l5.402-5.404a.955.955 0 0 1 1.35 0l5.403 5.404a.956.956 0 0 1-1.35 1.35L7.329 3.172Z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
       <div className="collapsible__title-button__container"></div>
 
@@ -73,6 +77,7 @@ const useStyles = createUseStyles({
     justifyContent: 'space-between',
     padding: '0 12px',
     alignItems: 'center',
+    cursor: 'pointer',
   },
 
   content: {
@@ -81,4 +86,8 @@ const useStyles = createUseStyles({
   },
 
   hide: { maxHeight: '0px', opacity: '0' },
+
+  rotate: {
+    rotate: '180deg',
+  },
 });
