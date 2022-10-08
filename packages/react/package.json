@@ -32,5 +32,8 @@
     "@pikasso-sdk/core": "workspace:^0.1.0",
     "jss": "^10.9.2",
     "react-jss": "^10.9.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
