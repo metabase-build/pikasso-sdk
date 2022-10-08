@@ -2,12 +2,8 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**", "lib/**"]
-    },
-    "web#build": {
-      "dependsOn": ["^build"],
-      "env": ["ENVIRONMENT"],
-      "outputs": [".next/**"]
+      "outputs": [".next/**", "dist/**", "build/**", "lib/**"],
+      "env": ["ENVIRONMENT"]
     },
     "graphql:mesh": {
       "outputs": [".mesh/**"],

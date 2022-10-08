@@ -97,7 +97,7 @@ export const PikassoPayButton: React.FC<PikassoPayButtonReactProps> = ({
         listingId,
         whPassThroughArgs,
         paymentMethod,
-        preferredSigninMethod,
+        preferredSigninMethod
       );
     });
   };

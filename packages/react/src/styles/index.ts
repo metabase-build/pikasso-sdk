@@ -35,7 +35,7 @@ export const formatProps = (theme: string): CustomStylingProps => ({
 });
 
 export const useStyles: (
-  data?: (CustomStylingProps & { theme?: Jss.Theme | undefined }) | undefined,
+  data?: (CustomStylingProps & { theme?: Jss.Theme | undefined }) | undefined
 ) => Classes<'@global' | 'pikassoButton' | 'pikassoImg' | 'pikassoParagraph'> = createUseStyles({
   '@global': {
     '@import':

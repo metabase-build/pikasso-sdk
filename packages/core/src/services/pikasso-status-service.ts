@@ -40,7 +40,7 @@ export function pikassoStatusService({
 
     if (!validateNftId(nftId)) {
       console.error(
-        'The nftId passed to is invalid. Make sure to pass the nftId obtained from the pikasso team, with format XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX',
+        'The nftId passed to is invalid. Make sure to pass the nftId obtained from the pikasso team, with format XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX'
       );
       return;
     }

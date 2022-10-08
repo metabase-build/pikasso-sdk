@@ -80,7 +80,7 @@ export interface PikassoModalServiceReturn {
     listingId?: string,
     whPassThroughArgs?: any,
     paymentMethod?: paymentMethods,
-    preferredSigninMethod?: SigninMethods,
+    preferredSigninMethod?: SigninMethods
   ) => void;
 }
 
