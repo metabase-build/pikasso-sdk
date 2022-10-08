@@ -13,8 +13,7 @@
     "require": "./lib/index.js"
   },
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
   "scripts": {
     "dev": "tsup src/index.ts --external react --format esm,cjs --outDir lib --watch --dts",
