@@ -1,6 +1,6 @@
 {
   "name": "@pikasso-sdk/react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Pikasso",
     "url": "https://pikasso.xyz"
@@ -28,7 +28,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@pikasso-sdk/core": "workspace:^0.1.0",
+    "@pikasso-sdk/core": "workspace:^0.2.0",
     "jss": "^10.9.2",
     "react-jss": "^10.9.2"
   },
