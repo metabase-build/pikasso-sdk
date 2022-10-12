@@ -14,6 +14,7 @@
     "prepare": "husky install",
     "clean": "turbo run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "setup": "pnpm install",
+    "reinstall": "pnpm run clean && pnpm run setup",
     "update": "pnpm update -r --interactive --latest"
   },
   "prettier": {
