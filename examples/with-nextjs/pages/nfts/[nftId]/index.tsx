@@ -7,10 +7,7 @@ import { CardNft } from '../../../components/card-nft';
 import { Footer } from '../../../components/footer';
 import { Header } from '../../../components/header';
 import Head from 'next/head';
-import getConfig from 'next/config';
 import { PikassoPayButton } from '@pikasso-sdk/react';
-
-const { publicRuntimeConfig } = getConfig();
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -102,8 +99,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                   <span className={'text-sm'}>(0.845 ETH)</span>
                 </div>
                 <div className="mt-7.5">
-                  {/* environment: 'production' | 'staging' | 'dev' */}
-                  <PikassoPayButton nftId={nftId} environment={publicRuntimeConfig.environment} />
+                  <PikassoPayButton nftId={nftId} environment={'staging'} />
                 </div>
               </div>
               {/* end listing */}
