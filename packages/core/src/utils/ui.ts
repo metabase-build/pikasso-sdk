@@ -1,17 +1,19 @@
 import { baseUrls, openApiUrls } from '@/types';
 
 export function getEnvironmentBaseUrl(environment = ''): string {
-  const productionValues = ['prod', 'production'];
-
   if (environment === 'staging') {
     return baseUrls.staging;
   }
 
-  if (productionValues.includes(environment) || !environment) {
+  if (environment === 'production') {
     return baseUrls.production;
   }
 
-  return baseUrls.dev;
+  if (environment === 'dev') {
+    return baseUrls.dev;
+  }
+
+  return baseUrls.production;
 }
 
 export function getEnvironmentOpenApiUrls(environment = ''): string {
@@ -23,7 +25,11 @@ export function getEnvironmentOpenApiUrls(environment = ''): string {
     return openApiUrls.production;
   }
 
-  return openApiUrls.dev;
+  if (environment === 'dev') {
+    return openApiUrls.dev;
+  }
+
+  return openApiUrls.production;
 }
 
 export const brandLogo = 'https://builder.pikasso.xyz/assets/image/logo-icon-only.svg';

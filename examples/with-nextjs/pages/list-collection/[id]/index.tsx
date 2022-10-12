@@ -1,8 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import { GetStaticPaths } from 'next';
 import * as React from 'react';
-import { PikassoWidgetListCollection } from '@pikasso-sdk/react';
 import { useRouter } from 'next/router';
+import { PikassoWidgetListCollection } from '@pikasso-sdk/react';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -25,7 +25,8 @@ const Index: NextPage = ({ id }: InferGetStaticPropsType<typeof getStaticProps>)
     <div>
       <PikassoWidgetListCollection
         collectionId={id}
-        onClick={async (id) => {
+        environment={'staging'}
+        onClick={async (id: any) => {
           await router.push({
             pathname: `/product-detail/${id}`,
           });

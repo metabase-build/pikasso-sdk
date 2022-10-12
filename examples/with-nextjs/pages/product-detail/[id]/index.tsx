@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const Index: NextPage = ({ id }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <React.Fragment>
-      <PikassoWidgetProductDetail nftId={id} />
+      <PikassoWidgetProductDetail nftId={id} environment={'staging'} />
     </React.Fragment>
   );
 };
