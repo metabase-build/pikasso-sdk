@@ -9,11 +9,13 @@ import { getEnvironmentOpenApiUrls } from '@pikasso-sdk/core';
 
 export type PikassoWidgetListCollectionProps = React.HTMLAttributes<HTMLDivElement> & {
   collectionId: string;
+  environment?: string;
   onClick?: (id?: string) => void;
 };
 
 export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionProps> = ({
   collectionId,
+  environment,
   onClick,
   className,
   ...rest
@@ -27,7 +29,7 @@ export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionPr
 
   const getCollection = useCallback(async () => {
     if (!isServerSideRendering && collectionId) {
-      const openApiBaseUrl = getEnvironmentOpenApiUrls('');
+      const openApiBaseUrl = getEnvironmentOpenApiUrls(environment);
 
       const responseCollection = await fetch(`${openApiBaseUrl}/market/collection/${collectionId}`);
       let collectionData = await responseCollection.json();
@@ -65,7 +67,7 @@ export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionPr
         <div {...rest} className={`${classes.container} ${className}`}>
           <CollectionBanner data={collection} totalItems={nfts.length} />
 
-          <Tabs totalOnSave={2} totalAuction={4} onChange={handleOnChangeTab} />
+          <Tabs totalOnSave={nfts.length} totalAuction={0} onChange={handleOnChangeTab} />
 
           <div className={classes.listNft}>
             {nfts.map((item, index) => (

@@ -3,31 +3,18 @@ import { Wrapper } from '@/components/wrapper/wrapper';
 import { createUseStyles } from 'react-jss';
 import { PikassoPayButton } from '@/components/pikasso-pay-button';
 
-export type ProductSaleInfoProps = React.HTMLAttributes<HTMLDivElement> & { nftId: string; data: any };
+export type ProductSaleInfoProps = React.HTMLAttributes<HTMLDivElement> & {
+  nftId: string;
+  environment?: string;
+  data: any;
+};
 
-export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({ nftId, data, className, ...rest }) => {
+export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({ nftId, environment, data, className, ...rest }) => {
   const classes = useStyles();
 
   return (
     <div {...rest} className={className}>
       <Wrapper>
-        {/*<div className={classes.header}>*/}
-        {/*  <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
-        {/*    <path*/}
-        {/*      d="M9.529 4.106a.716.716 0 1 0-1.433 0v4.776c0 .247.128.477.337.608l2.865 1.791a.716.716 0 1 0 .76-1.215l-2.53-1.58v-4.38Z"*/}
-        {/*      fill="currentColor"*/}
-        {/*    />*/}
-        {/*    <path*/}
-        {/*      fillRule="evenodd"*/}
-        {/*      clipRule="evenodd"*/}
-        {/*      d="M8.813.523a8.357 8.357 0 0 0-8.356 8.36 8.358 8.358 0 0 0 8.356 8.358 8.358 8.358 0 0 0 8.356-8.359A8.357 8.357 0 0 0 8.813.523Zm-6.924 8.36a6.925 6.925 0 1 1 13.847 0 6.925 6.925 0 1 1-13.847 0Z"*/}
-        {/*      fill="currentColor"*/}
-        {/*    />*/}
-        {/*  </svg>*/}
-
-        {/*  /!*<span className={classes.marginLeft}>Ends on {data.endTime}</span>*!/*/}
-        {/*</div>*/}
-
         <div className={classes.content}>
           <div className={classes.contentLeft}>
             <p className={classes.marginBottom}>Current Price</p>
@@ -39,7 +26,7 @@ export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({ nftId, data, c
           </div>
 
           <div className={classes.contentRight}>
-            <PikassoPayButton nftId={nftId} theme={'primary'} />
+            <PikassoPayButton nftId={nftId} theme={'primary'} environment={environment} />
           </div>
         </div>
       </Wrapper>

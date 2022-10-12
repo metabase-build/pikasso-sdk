@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 
@@ -26,6 +25,12 @@ const Home: NextPage = () => {
           </Link>
         </p>
       </main>
+
+      <iframe
+        width="100%"
+        height="710"
+        src="http://localhost:3000/embed/list-collection/2e867790-0691-4900-98ad-3f2b40e4d7cc"
+      ></iframe>
     </div>
   );
 };

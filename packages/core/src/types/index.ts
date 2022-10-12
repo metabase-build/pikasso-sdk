@@ -11,7 +11,7 @@ export enum baseUrls {
 }
 
 export enum openApiUrls {
-  production = '',
+  production = 'https://api.pikasso.xyz/v0',
   staging = 'https://staging-api.pikasso.xyz/v0',
   dev = 'https://dev-api.metabase.build/v0',
 }
