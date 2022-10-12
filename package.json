@@ -10,7 +10,7 @@
     "node:version": "node -v",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish",
+    "release": "turbo run build --filter=\"@pikasso-sdk/*\" && changeset publish",
     "prepare": "husky install",
     "clean": "turbo run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "setup": "pnpm install",
