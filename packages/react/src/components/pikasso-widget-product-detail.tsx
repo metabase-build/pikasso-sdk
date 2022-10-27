@@ -10,11 +10,13 @@ import { ProductSaleInfo } from '@/components/molecules/product-sale-info';
 
 export type PikassoWidgetProductDetailProps = React.HTMLAttributes<HTMLDivElement> & {
   nftId: string;
+  exchangeId: string;
   environment?: string;
 };
 
 export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProps> = ({
   nftId,
+  exchangeId,
   environment,
   className,
   ...rest
@@ -28,7 +30,7 @@ export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProp
     if (!isServerSideRendering && nftId) {
       const openApiBaseUrl = getEnvironmentOpenApiUrls(environment);
 
-      const responseNft = await fetch(`${openApiBaseUrl}/market/nft/${nftId}`);
+      const responseNft = await fetch(`${openApiBaseUrl}/market/nft/${nftId}?exchangeId=${exchangeId}`);
       let nftData = await responseNft.json();
 
       if (nftData.statusCode === 200) {
@@ -57,7 +59,13 @@ export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProp
             <div className={classes.flex}>
               <ProductNftInfo data={nft} />
 
-              <ProductSaleInfo nftId={nftId} data={nft} className={classes.marginTop} environment={environment} />
+              <ProductSaleInfo
+                nftId={nftId}
+                exchangeId={exchangeId}
+                data={nft}
+                className={classes.marginTop}
+                environment={environment}
+              />
 
               {/*<ProductDetails data={data.details} className={classes.marginTop} />*/}
             </div>

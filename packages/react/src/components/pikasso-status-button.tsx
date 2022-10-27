@@ -4,11 +4,11 @@ import { PikassoStatusButtonReactProps } from '@/types';
 import useEnvironment from '@/hooks/use-environment';
 import { LIB_VERSION } from '@/utils/version';
 import {
+  brandLogo,
   clientNames,
+  onboardingRequestStatusResponse,
   pikassoStatusButtonService,
   pikassoStatusService,
-  onboardingRequestStatusResponse,
-  brandLogo,
 } from '@pikasso-sdk/core';
 
 export const PikassoStatusButton: React.FC<PikassoStatusButtonReactProps> = ({
@@ -19,6 +19,7 @@ export const PikassoStatusButton: React.FC<PikassoStatusButtonReactProps> = ({
   tabIndex,
   theme = 'dark',
   nftId,
+  exchangeId,
   auctionId,
   platformId,
   mintConfig,
@@ -31,6 +32,7 @@ export const PikassoStatusButton: React.FC<PikassoStatusButtonReactProps> = ({
   const { goToOnboarding, fetchClientIntegration } = pikassoStatusService({
     libVersion: LIB_VERSION,
     nftId,
+    exchangeId,
     environment,
     platformId,
     auctionId,

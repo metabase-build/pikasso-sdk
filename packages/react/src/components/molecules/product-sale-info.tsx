@@ -5,11 +5,19 @@ import { PikassoPayButton } from '@/components/pikasso-pay-button';
 
 export type ProductSaleInfoProps = React.HTMLAttributes<HTMLDivElement> & {
   nftId: string;
+  exchangeId: string;
   environment?: string;
   data: any;
 };
 
-export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({ nftId, environment, data, className, ...rest }) => {
+export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({
+  nftId,
+  exchangeId,
+  environment,
+  data,
+  className,
+  ...rest
+}) => {
   const classes = useStyles();
 
   return (
@@ -26,7 +34,7 @@ export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({ nftId, environ
           </div>
 
           <div className={classes.contentRight}>
-            <PikassoPayButton nftId={nftId} theme={'primary'} environment={environment} />
+            <PikassoPayButton nftId={nftId} exchangeId={exchangeId} theme={'primary'} environment={environment} />
           </div>
         </div>
       </Wrapper>

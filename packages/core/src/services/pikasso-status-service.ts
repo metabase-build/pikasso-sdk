@@ -1,10 +1,11 @@
-import { OnboardingQueryParams, clientNames, customHeaders, onboardingRequestStatusResponse } from '@/types';
+import { clientNames, customHeaders, OnboardingQueryParams, onboardingRequestStatusResponse } from '@/types';
 import { validateUuid } from '@/utils';
 import { getEnvironmentBaseUrl } from '@/utils/ui';
 
 interface PikassoStatusServiceParams {
   libVersion: string;
   nftId: string;
+  exchangeId: string;
   platformId?: string;
   auctionId?: string;
   mintConfig: any;
@@ -25,6 +26,7 @@ const validateNftId = (nftId: string): boolean => {
 export function pikassoStatusService({
   libVersion,
   nftId,
+  exchangeId,
   platformId,
   auctionId,
   mintConfig,
@@ -34,7 +36,7 @@ export function pikassoStatusService({
 }: PikassoStatusServiceParams) {
   async function fetchClientIntegration() {
     if (!nftId || nftId === '' || nftId === '<YOUR_CLIENT_ID>') {
-      console.error('You must enter your own Pikasso client ID in <PikassoPayButton nftId="XXX">');
+      console.error('You must enter your own Pikasso client ID in <PikassoPayButton nftId="XXX" exchangeId="XXX">');
       return;
     }
 
@@ -71,6 +73,7 @@ export function pikassoStatusService({
   const formatOnboardingQueryParams = () => {
     const onboardingQueryParams: OnboardingQueryParams = {
       nftId: nftId,
+      exchangeId: exchangeId,
     };
 
     if (platformId) {

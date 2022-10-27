@@ -10,18 +10,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { id } = params as { id: string };
+  const { id, exchangeId } = params as { id: string; exchangeId: string };
 
   return {
-    props: { id },
+    props: { id, exchangeId },
     revalidate: 1,
   };
 };
 
-const Index: NextPage = ({ id }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Index: NextPage = ({ id, exchangeId }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <React.Fragment>
-      <PikassoWidgetProductDetail nftId={id} environment={'staging'} />
+      <PikassoWidgetProductDetail nftId={id} exchangeId={exchangeId} environment={'dev'} />
     </React.Fragment>
   );
 };

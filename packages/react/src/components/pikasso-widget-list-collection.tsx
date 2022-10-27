@@ -9,12 +9,14 @@ import { getEnvironmentOpenApiUrls } from '@pikasso-sdk/core';
 
 export type PikassoWidgetListCollectionProps = React.HTMLAttributes<HTMLDivElement> & {
   collectionId: string;
+  exchangeId: string;
   environment?: string;
   onClick?: (id?: string) => void;
 };
 
 export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionProps> = ({
   collectionId,
+  exchangeId,
   environment,
   onClick,
   className,
@@ -33,7 +35,9 @@ export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionPr
 
       const responseCollection = await fetch(`${openApiBaseUrl}/market/collection/${collectionId}`);
       let collectionData = await responseCollection.json();
-      const responseNfts = await fetch(`${openApiBaseUrl}/market/collection/${collectionId}/nft`);
+      const responseNfts = await fetch(
+        `${openApiBaseUrl}/market/collection/${collectionId}/nft?exchangeId=${exchangeId}`
+      );
       let nftsData = await responseNfts.json();
 
       if (collectionData.statusCode === 200) {
