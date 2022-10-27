@@ -1,11 +1,11 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import * as React from 'react';
 import Image from 'next/future/image';
-import { Details } from '../../../components/details';
-import { Avatar } from '../../../components/avatar';
-import { CardNft } from '../../../components/card-nft';
-import { Footer } from '../../../components/footer';
-import { Header } from '../../../components/header';
+import { Details } from '../../../../components/details';
+import { Avatar } from '../../../../components/avatar';
+import { CardNft } from '../../../../components/card-nft';
+import { Footer } from '../../../../components/footer';
+import { Header } from '../../../../components/header';
 import Head from 'next/head';
 import { PikassoPayButton } from '@pikasso-sdk/react';
 
@@ -17,15 +17,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { nftId } = params as { nftId: string };
+  const { nftId, exchangeId } = params as { nftId: string; exchangeId: string };
 
   return {
-    props: { nftId },
+    props: { nftId, exchangeId },
     revalidate: 1,
   };
 };
 
-const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home: NextPage = ({ nftId, exchangeId }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <React.Fragment>
       <Head>
@@ -99,7 +99,7 @@ const Home: NextPage = ({ nftId }: InferGetStaticPropsType<typeof getStaticProps
                   <span className={'text-sm'}>(0.845 ETH)</span>
                 </div>
                 <div className="mt-7.5">
-                  <PikassoPayButton nftId={nftId} environment={'staging'} />
+                  <PikassoPayButton exchangeId={exchangeId} nftId={nftId} environment={'staging'} />
                 </div>
               </div>
               {/* end listing */}
