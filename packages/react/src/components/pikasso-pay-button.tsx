@@ -59,6 +59,7 @@ export const PikassoPayButton: React.FC<PikassoPayButtonReactProps> = ({
 
   const { connect } = pikassoModalService({
     nftId,
+    exchangeId,
     showOverlay,
     setConnecting,
     libVersion: LIB_VERSION,
