@@ -30,7 +30,7 @@ const Index: NextPage = ({ id, exchangeId }: InferGetStaticPropsType<typeof getS
         environment={'dev'}
         onClick={async (id: any) => {
           await router.push({
-            pathname: `/product-detail/${id}`,
+            pathname: `/product-detail/${id}/${exchangeId}`,
           });
         }}
       />
