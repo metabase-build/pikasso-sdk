@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { Avatar } from './avatar';
 import * as React from 'react';
 
