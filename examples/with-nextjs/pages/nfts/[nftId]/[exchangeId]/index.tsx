@@ -1,6 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import * as React from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { Details } from '../../../../components/details';
 import { Avatar } from '../../../../components/avatar';
 import { CardNft } from '../../../../components/card-nft';
