@@ -1,5 +1,11 @@
 # @pikasso-sdk/core
 
+## 0.4.0
+
+### Minor Changes
+
+- add local environment
+
 ## 0.3.0
 
 ### Minor Changes
