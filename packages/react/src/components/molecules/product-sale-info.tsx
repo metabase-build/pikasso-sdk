@@ -20,6 +20,21 @@ export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({
 }) => {
   const classes = useStyles();
 
+  let price: any;
+  let hasOrder = false;
+  data?.orders?.map((order: any) => {
+    if (order.status === 'active') {
+      order?.prices?.map((item: any) => {
+        if (item?.exchange?.id === exchangeId) {
+          price = item;
+          hasOrder = true;
+        }
+      });
+    }
+  });
+
+  if (!hasOrder) return null;
+
   return (
     <div {...rest} className={className}>
       <Wrapper>
@@ -28,8 +43,8 @@ export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({
             <p className={classes.marginBottom}>Current Price</p>
 
             <div>
-              <span className={classes.money}>${data.order.price}</span>
-              <span>({data.order.price} ETH)</span>
+              <span className={classes.money}>${price?.price}</span>
+              <span>({price?.price} ETH)</span>
             </div>
           </div>
 

@@ -27,10 +27,10 @@ export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProp
   const [message, setMessage] = useState('');
 
   const getNFT = useCallback(async () => {
-    if (!isServerSideRendering && nftId) {
+    if (!isServerSideRendering && nftId.length > 0) {
       const openApiBaseUrl = getEnvironmentOpenApiUrls(environment);
 
-      const responseNft = await fetch(`${openApiBaseUrl}/market/nft/${nftId}?exchangeId=${exchangeId}`);
+      const responseNft = await fetch(`${openApiBaseUrl}/nfts/info/${nftId}`);
       let nftData = await responseNft.json();
 
       if (nftData.statusCode === 200) {

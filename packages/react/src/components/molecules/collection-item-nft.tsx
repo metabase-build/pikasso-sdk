@@ -1,39 +1,53 @@
 import * as React from 'react';
 import { createUseStyles } from 'react-jss';
+import { getAvatarLetter, getUsernameFromEmail } from '@/utils/string';
 
 export type CollectionItemNftProps = React.HTMLAttributes<HTMLDivElement> & {
+  exchangeId: string;
   data: any;
   collectionName: string;
   onClick?: (id: string) => void;
 };
 
 export const CollectionItemNft: React.FC<CollectionItemNftProps> = ({
+  exchangeId,
   data,
   collectionName,
   onClick,
   className,
   ...rest
 }) => {
+  let price: any;
+  data?.orders?.map((order: any) => {
+    if (order.status === 'active') {
+      order?.prices?.map((item: any) => {
+        if (item?.exchange?.id === exchangeId) {
+          price = item;
+        }
+      });
+    }
+  });
+
   const classes = useStyles();
   return (
     <div {...rest} className={className}>
       <div className={classes.container}>
         <div>
-          <img alt={'image'} className={classes.image} src={data.image} />
+          <img alt={'image'} className={classes.image} src={data?.image} />
         </div>
 
         <div className={classes.boxName}>
           <div className={classes.title}>{collectionName}</div>
-          <div className={classes.name}>{data.name}</div>
+          <div className={classes.name}>{data?.name}</div>
         </div>
 
         <div className={classes.boxPrice}>
           <div className={classes.user}>
-            <span className={classes.spanIcon}>JD</span>
-            <span className={classes.spanUser}>{data.owner}</span>
+            <span className={classes.spanIcon}>{getAvatarLetter(data?.owner?.email)}</span>
+            <span className={classes.spanUser}>{getUsernameFromEmail(data?.owner?.email)}</span>
           </div>
 
-          <div className={classes.price}>${data.order.price}</div>
+          <div className={classes.price}>${price?.price}</div>
         </div>
       </div>
     </div>
