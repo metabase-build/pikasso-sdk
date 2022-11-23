@@ -15,7 +15,7 @@
     "clean": "turbo run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "setup": "pnpm install",
     "reinstall": "pnpm run clean && pnpm run setup",
-    "update": "pnpm update -r --interactive --latest"
+    "update": "pnpm update -r --latest"
   },
   "prettier": {
     "plugins": [
@@ -26,13 +26,13 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "@changesets/cli": "^2.25.0",
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "husky": "^8.0.1",
+    "@changesets/cli": "^2.25.2",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "turbo": "^1.5.5"
+    "turbo": "^1.6.3"
   }
 }
