@@ -7,13 +7,15 @@ export enum clientNames {
 export enum baseUrls {
   production = 'https://builder.pikasso.xyz',
   staging = 'https://staging.builder.pikasso.xyz',
-  dev = 'http://localhost:3000' /* dev.builder.pikasso.xyz */,
+  dev = 'https://dev.builder.pikasso.xyz',
+  local = 'http://localhost:3000',
 }
 
 export enum openApiUrls {
   production = 'https://api.pikasso.xyz/v0',
   staging = 'https://staging-api.pikasso.xyz/v0',
   dev = 'https://dev-api.metabase.build/v0',
+  local = 'https://dev-api.metabase.build/v0',
 }
 
 export enum customHeaders {

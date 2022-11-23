@@ -13,6 +13,10 @@ export function getEnvironmentBaseUrl(environment = ''): string {
     return baseUrls.dev;
   }
 
+  if (environment === 'local') {
+    return baseUrls.local;
+  }
+
   return baseUrls.production;
 }
 
@@ -27,6 +31,10 @@ export function getEnvironmentOpenApiUrls(environment = ''): string {
 
   if (environment === 'dev') {
     return openApiUrls.dev;
+  }
+
+  if (environment === 'local') {
+    return openApiUrls.local;
   }
 
   return openApiUrls.production;
