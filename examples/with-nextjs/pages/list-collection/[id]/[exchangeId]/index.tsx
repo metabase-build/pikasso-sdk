@@ -20,7 +20,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const Index: NextPage = ({ id, exchangeId }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(id, exchangeId);
   const router = useRouter();
   return (
     <div>

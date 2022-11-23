@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { CollectionBanner } from '@/components/molecules/collection-banner';
-import { CollectionItemNft } from '@/components/molecules/collection-item-nft';
 import { Tabs } from '@/components/molecules/tabs';
 import { createUseStyles } from 'react-jss';
 import useEnvironment from '@/hooks/use-environment';
 import { getEnvironmentOpenApiUrls } from '@pikasso-sdk/core';
+import { CollectionItemNft } from '@/components/molecules/collection-item-nft';
 
 export type PikassoWidgetListCollectionProps = React.HTMLAttributes<HTMLDivElement> & {
   collectionId: string;
@@ -76,7 +76,7 @@ export const PikassoWidgetListCollection: React.FC<PikassoWidgetListCollectionPr
           <div className={classes.listNft}>
             {nfts.map((item, index) => (
               <button key={index} onClick={() => (onClick ? onClick(item.id) : {})}>
-                <CollectionItemNft data={item} collectionName={collection.name} />
+                <CollectionItemNft exchangeId={exchangeId} data={item} collectionName={collection.name} />
               </button>
             ))}
           </div>

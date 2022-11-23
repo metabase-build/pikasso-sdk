@@ -13,10 +13,10 @@ export const ProductProperties: React.FC<ProductPropertiesProps> = ({ data, clas
       <Wrapper>
         <CollapseList id={'property'} title={'Properties'}>
           <div className={classes.content}>
-            {data.map((item, index) => (
+            {data?.map((item, index) => (
               <div key={index} className={classes.property}>
-                <p className={classes.center}>{item.type}</p>
-                <p className={classes.name}>{item.value}</p>
+                <p className={classes.center}>{item?.type}</p>
+                <p className={classes.name}>{item?.value}</p>
               </div>
             ))}
           </div>

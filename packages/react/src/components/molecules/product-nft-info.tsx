@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createUseStyles } from 'react-jss';
+import { getAvatarLetter, getUsernameFromEmail } from '@/utils/string';
 
 export type ProductNftInfoProps = React.HTMLAttributes<HTMLDivElement> & { data: any };
 
@@ -10,18 +11,18 @@ export const ProductNftInfo: React.FC<ProductNftInfoProps> = ({ data, className,
     <div {...rest} className={className}>
       <div className={classes.container}>
         <div className={classes.title}>
-          <span>{data.collection.name}</span>
+          <span>{data?.collection?.name}</span>
         </div>
 
-        <div className={classes.name}>{data.name}</div>
+        <div className={classes.name}>{data?.name}</div>
 
         <div className={classes.boxUser}>
           <div className={`${classes.user} ${classes.marginRight}`}>
             <span>Creator:</span>
 
             <div className={classes.alignUser}>
-              <span className={classes.spanImage}>JD</span>
-              <span className={classes.marginLeft}>{data.createdBy.email}</span>
+              <span className={classes.spanImage}>{getAvatarLetter(data?.createdBy?.email)}</span>
+              <span className={classes.marginLeft}>{getUsernameFromEmail(data?.createdBy?.email)}</span>
             </div>
           </div>
 
@@ -29,13 +30,13 @@ export const ProductNftInfo: React.FC<ProductNftInfoProps> = ({ data, className,
             <span>Owner:</span>
 
             <div className={classes.alignUser}>
-              <span className={classes.spanImage}>JD</span>
-              <span className={classes.marginLeft}>{data.createdBy.email}</span>
+              <span className={classes.spanImage}>{getAvatarLetter(data?.owner?.email)}</span>
+              <span className={classes.marginLeft}>{getUsernameFromEmail(data?.owner?.email)}</span>
             </div>
           </div>
         </div>
 
-        <p className={classes.description}>{data.description}</p>
+        <p className={classes.description}>{data?.description}</p>
       </div>
     </div>
   );
