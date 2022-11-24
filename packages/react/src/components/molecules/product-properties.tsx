@@ -15,7 +15,7 @@ export const ProductProperties: React.FC<ProductPropertiesProps> = ({ data, clas
           <div className={classes.content}>
             {data?.map((item, index) => (
               <div key={index} className={classes.property}>
-                <p className={classes.center}>{item?.type}</p>
+                <p className={classes.center}>{item?.trait_type}</p>
                 <p className={classes.name}>{item?.value}</p>
               </div>
             ))}
