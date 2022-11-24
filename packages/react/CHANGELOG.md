@@ -1,5 +1,13 @@
 # @pikasso-sdk/react
 
+## 0.4.1
+
+### Patch Changes
+
+- update field of property of nft detail
+- Updated dependencies
+  - @pikasso-sdk/core@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @pikasso-sdk/core
 
+## 0.4.1
+
+### Patch Changes
+
+- update field of property of nft detail
+
 ## 0.4.0
 
 ### Minor Changes
