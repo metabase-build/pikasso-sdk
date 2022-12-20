@@ -21,12 +21,16 @@ export function getEnvironmentBaseUrl(environment = ''): string {
 }
 
 export function getEnvironmentOpenApiUrls(environment = ''): string {
+  if (environment === 'production') {
+    return openApiUrls.production;
+  }
+
   if (environment === 'staging') {
     return openApiUrls.staging;
   }
 
-  if (environment === 'production') {
-    return openApiUrls.production;
+  if (environment === 'testnet') {
+    return openApiUrls.testnet;
   }
 
   if (environment === 'dev') {
