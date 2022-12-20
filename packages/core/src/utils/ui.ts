@@ -1,12 +1,16 @@
 import { baseUrls, openApiUrls } from '@/types';
 
 export function getEnvironmentBaseUrl(environment = ''): string {
+  if (environment === 'production') {
+    return baseUrls.production;
+  }
+
   if (environment === 'staging') {
     return baseUrls.staging;
   }
 
-  if (environment === 'production') {
-    return baseUrls.production;
+  if (environment === 'testnet') {
+    return baseUrls.testnet;
   }
 
   if (environment === 'dev') {
