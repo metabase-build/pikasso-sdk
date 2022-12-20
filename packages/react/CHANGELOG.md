@@ -1,5 +1,16 @@
 # @pikasso-sdk/react
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: add testnet env
+
+### Patch Changes
+
+- Updated dependencies
+  - @pikasso-sdk/core@0.5.0
+
 ## 0.4.1
 
 ### Patch Changes
