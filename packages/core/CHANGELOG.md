@@ -1,5 +1,11 @@
 # @pikasso-sdk/core
 
+## 0.6.0
+
+### Minor Changes
+
+- Add campaign widget
+
 ## 0.5.1
 
 ### Patch Changes

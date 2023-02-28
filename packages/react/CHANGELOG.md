@@ -1,5 +1,16 @@
 # @pikasso-sdk/react
 
+## 0.6.0
+
+### Minor Changes
+
+- Add campaign widget
+
+### Patch Changes
+
+- Updated dependencies
+  - @pikasso-sdk/core@0.6.0
+
 ## 0.5.1
 
 ### Patch Changes
