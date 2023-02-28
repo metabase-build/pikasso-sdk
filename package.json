@@ -26,13 +26,13 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "@changesets/cli": "^2.25.2",
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
-    "husky": "^8.0.2",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.8.0",
-    "prettier-plugin-tailwindcss": "^0.1.13",
-    "turbo": "^1.6.3"
+    "@changesets/cli": "^2.26.0",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "turbo": "^1.8.2"
   }
 }

@@ -12,12 +12,14 @@ export type PikassoWidgetProductDetailProps = React.HTMLAttributes<HTMLDivElemen
   nftId: string;
   exchangeId: string;
   environment?: string;
+  refId?: string;
 };
 
 export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProps> = ({
   nftId,
   exchangeId,
   environment,
+  refId,
   className,
   ...rest
 }) => {
@@ -61,6 +63,7 @@ export const PikassoWidgetProductDetail: React.FC<PikassoWidgetProductDetailProp
 
               <ProductSaleInfo
                 nftId={nftId}
+                refId={refId}
                 exchangeId={exchangeId}
                 data={nft}
                 className={classes.marginTop}

@@ -64,6 +64,7 @@ export interface BaseButtonProps {
   tabIndex?: number;
   nftId: string;
   exchangeId: string;
+  refId?: string;
   auctionId?: string;
   theme?: theme;
   platformId?: string;

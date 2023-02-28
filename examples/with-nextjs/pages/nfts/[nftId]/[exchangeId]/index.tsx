@@ -99,7 +99,7 @@ const Home: NextPage = ({ nftId, exchangeId }: InferGetStaticPropsType<typeof ge
                   <span className={'text-sm'}>(0.845 ETH)</span>
                 </div>
                 <div className="mt-7.5">
-                  <PikassoPayButton exchangeId={exchangeId} nftId={nftId} environment={'staging'} />
+                  <PikassoPayButton exchangeId={exchangeId} nftId={nftId} environment={'staging'} refId="refId" />
                 </div>
               </div>
               {/* end listing */}
