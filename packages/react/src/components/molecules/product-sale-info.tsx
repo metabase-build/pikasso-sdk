@@ -7,6 +7,7 @@ export type ProductSaleInfoProps = React.HTMLAttributes<HTMLDivElement> & {
   nftId: string;
   exchangeId: string;
   environment?: string;
+  refId?: string;
   data: any;
 };
 
@@ -14,6 +15,7 @@ export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({
   nftId,
   exchangeId,
   environment,
+  refId,
   data,
   className,
   ...rest
@@ -49,7 +51,13 @@ export const ProductSaleInfo: React.FC<ProductSaleInfoProps> = ({
           </div>
 
           <div className={classes.contentRight}>
-            <PikassoPayButton nftId={nftId} exchangeId={exchangeId} theme={'primary'} environment={environment} />
+            <PikassoPayButton
+              nftId={nftId}
+              exchangeId={exchangeId}
+              refId={refId}
+              theme={'primary'}
+              environment={environment}
+            />
           </div>
         </div>
       </Wrapper>

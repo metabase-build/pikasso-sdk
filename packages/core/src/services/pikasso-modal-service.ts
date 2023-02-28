@@ -4,6 +4,7 @@ import { getEnvironmentBaseUrl } from '@/utils/ui';
 type MintQueryParams = {
   nftId: string;
   exchangeId: string;
+  refId?: string;
   // closeOnSuccess: string;
   // collectionTitle?: string;
   // collectionDescription?: string;
@@ -64,6 +65,7 @@ const removeLoadingOverlay = (): void => {
 interface PikassoModalServiceParams {
   nftId: string;
   exchangeId: string;
+  refId?: string;
   libVersion: string;
   showOverlay: boolean;
   setConnecting: (connecting: boolean) => void;
@@ -89,6 +91,7 @@ export interface PikassoModalServiceReturn {
 export function pikassoModalService({
   nftId,
   exchangeId,
+  refId,
   // libVersion,
   showOverlay,
   setConnecting,
@@ -113,6 +116,7 @@ PikassoModalServiceParams): PikassoModalServiceReturn {
         const mintQueryParams: MintQueryParams = {
           nftId: nftId,
           exchangeId: exchangeId,
+          refId,
           // closeOnSuccess: 'false',
           // clientName,
           // clientVersion: libVersion,
@@ -154,6 +158,8 @@ PikassoModalServiceParams): PikassoModalServiceReturn {
         // if (preferredSigninMethod) {
         //   mintQueryParams.preferredSigninMethod = preferredSigninMethod;
         // }
+        console.log({ mintQueryParams });
+        debugger;
 
         return new URLSearchParams(mintQueryParams).toString();
       };
