@@ -158,8 +158,6 @@ PikassoModalServiceParams): PikassoModalServiceReturn {
         // if (preferredSigninMethod) {
         //   mintQueryParams.preferredSigninMethod = preferredSigninMethod;
         // }
-        console.log({ mintQueryParams });
-        debugger;
 
         return new URLSearchParams(mintQueryParams).toString();
       };
